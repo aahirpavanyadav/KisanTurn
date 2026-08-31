@@ -1928,3 +1928,15 @@ a {
     }
 
 }
+/* =========================================
+   FORGOT PASSWORD
+========================================= */
+
+.forgot-hidden {
+    display: none;
+}
+
+
+.forgot-hidden.show {
+    display: block;
+}
