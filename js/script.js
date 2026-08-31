@@ -1,8 +1,9 @@
-/* ================================
-   MOBILE NAVIGATION
-================================ */
+/* =========================
+   MOBILE MENU
+========================= */
 
 const menuBtn = document.getElementById("menuBtn");
+
 const navLinks = document.getElementById("navLinks");
 
 
@@ -13,7 +14,7 @@ menuBtn.addEventListener("click", () => {
 });
 
 
-/* Close mobile menu when a link is clicked */
+/* Close menu after clicking a link */
 
 const navItems =
     document.querySelectorAll(".nav-links a");
@@ -31,117 +32,108 @@ navItems.forEach((item) => {
 
 
 
-/* ================================
-   LOGIN MODAL
-================================ */
+/* =========================
+   AUTH MODAL
+========================= */
 
 const loginBtn =
     document.getElementById("loginBtn");
 
-const loginModal =
-    document.getElementById("loginModal");
+const registerBtn =
+    document.getElementById("registerBtn");
+
+const trackBtn =
+    document.getElementById("trackBtn");
+
+const authModal =
+    document.getElementById("authModal");
 
 const closeModal =
     document.getElementById("closeModal");
 
-const modalClose =
-    document.querySelector(".modal-close");
-
 
 function openModal() {
 
-    loginModal.classList.add("show");
+    authModal.classList.add("show");
 
     document.body.style.overflow = "hidden";
 
 }
 
 
-function closeLoginModal() {
+function closeAuthModal() {
 
-    loginModal.classList.remove("show");
+    authModal.classList.remove("show");
 
     document.body.style.overflow = "";
 
 }
 
 
+/* Open modal */
+
 loginBtn.addEventListener("click", openModal);
 
+registerBtn.addEventListener("click", openModal);
+
+trackBtn.addEventListener("click", openModal);
+
+
+/* Close button */
 
 closeModal.addEventListener(
     "click",
-    closeLoginModal
+    closeAuthModal
 );
 
 
-modalClose.addEventListener(
+/* Click outside modal */
+
+authModal.addEventListener(
     "click",
-    closeLoginModal
+    (event) => {
+
+        if (event.target === authModal) {
+
+            closeAuthModal();
+
+        }
+
+    }
+);
+
+
+/* Escape key */
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (event.key === "Escape") {
+
+            closeAuthModal();
+
+        }
+
+    }
 );
 
 
 
-/* Close modal when clicking outside */
+/* =========================
+   FARMER MODULE BUTTONS
+========================= */
 
-loginModal.addEventListener("click", (event) => {
-
-    if (event.target === loginModal) {
-
-        closeLoginModal();
-
-    }
-
-});
+const moduleCards =
+    document.querySelectorAll(".module-card");
 
 
+moduleCards.forEach((card) => {
 
-/* Close modal with Escape key */
-
-document.addEventListener("keydown", (event) => {
-
-    if (event.key === "Escape") {
-
-        closeLoginModal();
-
-    }
-
-});
-
-
-
-/* ================================
-   GET STARTED BUTTON
-================================ */
-
-const getStartedBtn =
-    document.getElementById("getStartedBtn");
-
-
-getStartedBtn.addEventListener("click", () => {
-
-    openModal();
-
-});
-
-
-
-/* ================================
-   FUTURE PAGE LINKS
-================================ */
-
-const futureLinks =
-    document.querySelectorAll(".future-link");
-
-
-futureLinks.forEach((link) => {
-
-    link.addEventListener("click", (event) => {
-
-        event.preventDefault();
+    card.addEventListener("click", () => {
 
         alert(
-            "This module is currently under development."
+            "This farmer module will be available after authentication."
         );
 
     });
@@ -150,9 +142,9 @@ futureLinks.forEach((link) => {
 
 
 
-/* ================================
-   ACTIVE NAV LINK
-================================ */
+/* =========================
+   ACTIVE NAVIGATION
+========================= */
 
 const sections =
     document.querySelectorAll("section[id]");
@@ -160,23 +152,22 @@ const sections =
 
 window.addEventListener("scroll", () => {
 
-    let currentSection = "";
+    let current = "";
 
     sections.forEach((section) => {
 
-        const sectionTop =
-            section.offsetTop - 150;
+        const top =
+            section.offsetTop - 120;
 
-        const sectionHeight =
+        const height =
             section.offsetHeight;
 
         if (
-            window.scrollY >= sectionTop &&
-            window.scrollY <
-            sectionTop + sectionHeight
+            window.scrollY >= top &&
+            window.scrollY < top + height
         ) {
 
-            currentSection =
+            current =
                 section.getAttribute("id");
 
         }
@@ -190,7 +181,7 @@ window.addEventListener("scroll", () => {
 
         if (
             link.getAttribute("href") ===
-            "#" + currentSection
+            "#" + current
         ) {
 
             link.classList.add("active");
