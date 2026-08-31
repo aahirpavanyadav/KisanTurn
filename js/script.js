@@ -191,3 +191,213 @@ window.addEventListener("scroll", () => {
     });
 
 });
+/* =========================================
+   PASSWORD SHOW / HIDE
+========================================= */
+
+const passwordToggles =
+    document.querySelectorAll(".password-toggle");
+
+
+passwordToggles.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        const targetId =
+            button.dataset.target;
+
+        const passwordInput =
+            document.getElementById(targetId);
+
+
+        if (passwordInput.type === "password") {
+
+            passwordInput.type = "text";
+
+            button.textContent = "Hide";
+
+        } else {
+
+            passwordInput.type = "password";
+
+            button.textContent = "Show";
+
+        }
+
+    });
+
+});
+
+
+
+/* =========================================
+   LOGIN FORM
+========================================= */
+
+const loginForm =
+    document.getElementById("loginForm");
+
+
+if (loginForm) {
+
+    loginForm.addEventListener(
+        "submit",
+        (event) => {
+
+            event.preventDefault();
+
+
+            const mobile =
+                document
+                    .getElementById("loginMobile")
+                    .value
+                    .trim();
+
+
+            const password =
+                document
+                    .getElementById("loginPassword")
+                    .value;
+
+
+            /* Basic validation */
+
+            if (!/^[0-9]{10}$/.test(mobile)) {
+
+                alert(
+                    "Please enter a valid 10-digit mobile number."
+                );
+
+                return;
+
+            }
+
+
+            if (password.length < 6) {
+
+                alert(
+                    "Password must contain at least 6 characters."
+                );
+
+                return;
+
+            }
+
+
+            /*
+            Temporary frontend login.
+
+            Later replace this with
+            backend API authentication.
+            */
+
+            alert(
+                "Login successful! Redirecting to dashboard."
+            );
+
+
+            window.location.href =
+                "dashboard.html";
+
+        }
+    );
+
+}
+
+
+
+/* =========================================
+   REGISTER FORM
+========================================= */
+
+const registerForm =
+    document.getElementById("registerForm");
+
+
+if (registerForm) {
+
+    registerForm.addEventListener(
+        "submit",
+        (event) => {
+
+            event.preventDefault();
+
+
+            const mobile =
+                document
+                    .getElementById("farmerMobile")
+                    .value
+                    .trim();
+
+
+            const password =
+                document
+                    .getElementById("registerPassword")
+                    .value;
+
+
+            const confirmPassword =
+                document
+                    .getElementById("confirmPassword")
+                    .value;
+
+
+            /* Mobile validation */
+
+            if (!/^[0-9]{10}$/.test(mobile)) {
+
+                alert(
+                    "Please enter a valid 10-digit mobile number."
+                );
+
+                return;
+
+            }
+
+
+            /* Password validation */
+
+            if (password.length < 6) {
+
+                alert(
+                    "Password must contain at least 6 characters."
+                );
+
+                return;
+
+            }
+
+
+            /* Password match */
+
+            if (password !== confirmPassword) {
+
+                alert(
+                    "Passwords do not match."
+                );
+
+                return;
+
+            }
+
+
+            /*
+            Temporary frontend registration.
+
+            Later:
+            Send this data to backend API.
+            */
+
+
+            alert(
+                "Registration successful! You can now login."
+            );
+
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
+}
