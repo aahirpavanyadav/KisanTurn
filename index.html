@@ -1,285 +1,652 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kisan Turn | Under Construction</title>
+    <meta
+        name="description"
+        content="Kisan Turn - Smart Farmer Procurement Queue and Status Management"
+    >
 
-    <style>
+    <title>Kisan Turn | Farmer Procurement Management</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-
-            background: linear-gradient(135deg, #f7fbf5, #e7f3e2);
-            color: #183d22;
-        }
-
-        /* NAVBAR */
-
-        nav {
-            width: 100%;
-            padding: 18px 7%;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(10px);
-
-            border-bottom: 1px solid rgba(40, 100, 50, 0.1);
-        }
-
-        .brand-name {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #26713a;
-            letter-spacing: 0.5px;
-        }
-
-        .status {
-            padding: 9px 16px;
-            border-radius: 50px;
-
-            background: #e6f4e8;
-            color: #26713a;
-
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-
-        /* MAIN */
-
-        main {
-            flex: 1;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 50px 20px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 900px;
-
-            text-align: center;
-        }
-
-
-        /* CONTENT */
-
-        .badge {
-            display: inline-block;
-
-            background: #e4f3e5;
-            color: #2f7a40;
-
-            padding: 8px 16px;
-            border-radius: 50px;
-
-            font-size: 0.85rem;
-            font-weight: 600;
-
-            margin-bottom: 25px;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 7vw, 5rem);
-
-            line-height: 1.1;
-            margin-bottom: 25px;
-
-            color: #173d22;
-        }
-
-        h1 span {
-            color: #2d8a42;
-        }
-
-        .description {
-            max-width: 650px;
-
-            margin: 0 auto 35px;
-
-            font-size: clamp(1rem, 2vw, 1.15rem);
-
-            line-height: 1.7;
-            color: #607365;
-        }
-
-
-        /* CONSTRUCTION CARD */
-
-        .construction-box {
-            max-width: 500px;
-
-            margin: auto;
-
-            background: white;
-
-            padding: 40px 30px;
-
-            border-radius: 25px;
-
-            box-shadow: 0 20px 50px rgba(32, 92, 43, 0.12);
-
-            border: 1px solid rgba(40, 120, 60, 0.08);
-        }
-
-        .construction-icon {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-
-        .construction-box h2 {
-            font-size: 1.7rem;
-
-            margin-bottom: 12px;
-
-            color: #214d2a;
-        }
-
-        .construction-box p {
-            color: #718074;
-            line-height: 1.6;
-        }
-
-
-        /* FOOTER */
-
-        footer {
-            text-align: center;
-
-            padding: 20px;
-
-            color: #708174;
-
-            font-size: 0.85rem;
-        }
-
-
-        /* MOBILE */
-
-        @media (max-width: 600px) {
-
-            nav {
-                padding: 15px 6%;
-            }
-
-            .brand-name {
-                font-size: 1.3rem;
-            }
-
-            .status {
-                font-size: 0.7rem;
-                padding: 7px 10px;
-            }
-
-            main {
-                padding: 40px 18px;
-            }
-
-            .construction-box {
-                padding: 35px 20px;
-            }
-
-        }
-
-    </style>
 </head>
 
 
 <body>
 
 
-    <!-- NAVBAR -->
+    <!-- =========================
+         HEADER / NAVBAR
+    ========================== -->
 
-    <nav>
+    <header class="header">
 
-        <div class="brand-name">
-            Kisan Turn
-        </div>
+        <nav class="navbar container">
 
-        <div class="status">
-            🚧 Coming Soon
-        </div>
+            <!-- BRAND -->
 
-    </nav>
-
+            <a href="#home" class="brand">
+                <span class="brand-icon">🌾</span>
+                <span>Kisan Turn</span>
+            </a>
 
 
-    <!-- MAIN -->
+            <!-- DESKTOP NAVIGATION -->
+
+            <div class="nav-links" id="navLinks">
+
+                <a href="#home" class="active">Home</a>
+
+                <a href="#about">About</a>
+
+                <a href="#services">Services</a>
+
+                <!-- Future Pages -->
+                <a href="#" class="future-link">Dashboard</a>
+
+                <a href="#" class="future-link">Search</a>
+
+                <a href="#" class="future-link">Results</a>
+
+                <a href="#" class="future-link">Profile</a>
+
+            </div>
+
+
+            <!-- AUTH BUTTON -->
+
+            <div class="nav-actions">
+
+                <button class="login-btn" id="loginBtn">
+                    Login
+                </button>
+
+
+                <!-- MOBILE MENU BUTTON -->
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Open navigation menu"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
 
     <main>
 
-        <div class="container">
 
-            <div class="badge">
-                Farmer Procurement Management
-            </div>
+        <!-- =====================
+             HERO / HOME
+        ====================== -->
 
+        <section class="hero" id="home">
 
-            <h1>
-                Something Better for
-                <span>Farmers</span>
-                is Growing.
-            </h1>
+            <div class="container hero-container">
 
 
-            <p class="description">
+                <!-- HERO CONTENT -->
 
-                Kisan Turn is being built to simplify farmer
-                procurement queues and provide real-time status
-                tracking for a smoother and more transparent
-                procurement experience.
+                <div class="hero-content">
 
-            </p>
+                    <div class="hero-badge">
+
+                        <span class="status-dot"></span>
+
+                        Smart Procurement Management
+
+                    </div>
 
 
-            <div class="construction-box">
+                    <h1>
+                        Your Turn.
+                        <span>Made Simple.</span>
+                    </h1>
 
-                <div class="construction-icon">
-                    🚧
+
+                    <p>
+
+                        Kisan Turn helps farmers track their
+                        procurement queue, monitor real-time status,
+                        and experience a more transparent and
+                        organized procurement process.
+
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+                        <button
+                            class="primary-btn"
+                            id="getStartedBtn"
+                        >
+                            Get Started
+                            <span>→</span>
+                        </button>
+
+
+                        <a href="#about" class="secondary-btn">
+                            Learn More
+                        </a>
+
+                    </div>
+
+
+                    <!-- QUICK STATS -->
+
+                    <div class="hero-stats">
+
+                        <div class="stat">
+
+                            <strong>Real-Time</strong>
+
+                            <span>Queue Tracking</span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <strong>Simple</strong>
+
+                            <span>Status Updates</span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <strong>Transparent</strong>
+
+                            <span>Procurement Process</span>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <h2>
-                    Under Construction
-                </h2>
 
-                <p>
-                    We are working on something that will make
-                    farmer procurement management simpler,
-                    faster, and more transparent.
-                </p>
+
+                <!-- HERO VISUAL -->
+
+                <div class="hero-visual">
+
+                    <div class="dashboard-preview">
+
+
+                        <div class="preview-header">
+
+                            <div>
+
+                                <span class="small-label">
+                                    PROCUREMENT STATUS
+                                </span>
+
+                                <h3>Farmer Queue</h3>
+
+                            </div>
+
+
+                            <div class="live-badge">
+
+                                <span></span>
+
+                                LIVE
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="token-card">
+
+                            <span>Your Token</span>
+
+                            <strong>042</strong>
+
+                            <p>Estimated Turn: 25 min</p>
+
+                        </div>
+
+
+
+                        <div class="queue-info">
+
+                            <div class="queue-item">
+
+                                <div class="queue-number current">
+                                    041
+                                </div>
+
+                                <div>
+
+                                    <strong>Currently Serving</strong>
+
+                                    <span>Verification in progress</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="queue-item">
+
+                                <div class="queue-number">
+                                    042
+                                </div>
+
+                                <div>
+
+                                    <strong>Your Turn</strong>
+
+                                    <span>Please stay available</span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-section">
+
+                            <div class="progress-text">
+
+                                <span>Queue Progress</span>
+
+                                <span>82%</span>
+
+                            </div>
+
+
+                            <div class="progress-bar">
+
+                                <div class="progress"></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DECORATIVE SHAPES -->
+
+                    <div class="floating-card card-one">
+                        🌾 Farmer First
+                    </div>
+
+
+                    <div class="floating-card card-two">
+                        ✓ Live Status
+                    </div>
+
+                </div>
 
             </div>
 
-        </div>
+        </section>
+
+
+
+        <!-- =====================
+             ABOUT
+        ====================== -->
+
+        <section class="section about-section" id="about">
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <span class="section-tag">
+                        ABOUT KISAN TURN
+                    </span>
+
+
+                    <h2>
+                        Making Procurement
+                        <span>More Organized.</span>
+                    </h2>
+
+
+                    <p>
+
+                        Kisan Turn is designed to reduce uncertainty
+                        in the procurement process by providing a
+                        clear digital system for queue and status
+                        management.
+
+                    </p>
+
+                </div>
+
+
+                <div class="about-grid">
+
+
+                    <div class="about-card">
+
+                        <div class="card-icon">
+                            01
+                        </div>
+
+                        <h3>Digital Queue</h3>
+
+                        <p>
+
+                            Farmers can receive and track their
+                            procurement queue position digitally.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="about-card">
+
+                        <div class="card-icon">
+                            02
+                        </div>
+
+                        <h3>Live Status</h3>
+
+                        <p>
+
+                            Track every important stage of the
+                            procurement process in real time.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="about-card">
+
+                        <div class="card-icon">
+                            03
+                        </div>
+
+                        <h3>Better Management</h3>
+
+                        <p>
+
+                            Procurement centers can manage farmers,
+                            queues, and status updates efficiently.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================
+             SERVICES / FEATURES
+        ====================== -->
+
+        <section class="section services-section" id="services">
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <span class="section-tag">
+                        SERVICES
+                    </span>
+
+
+                    <h2>
+                        Everything in
+                        <span>One System.</span>
+                    </h2>
+
+                </div>
+
+
+
+                <div class="services-grid">
+
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            🎫
+                        </div>
+
+                        <h3>Queue Management</h3>
+
+                        <p>
+                            Manage and monitor procurement queues
+                            efficiently.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            📊
+                        </div>
+
+                        <h3>Status Tracking</h3>
+
+                        <p>
+                            Follow procurement progress from
+                            registration to completion.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            🔔
+                        </div>
+
+                        <h3>Notifications</h3>
+
+                        <p>
+                            Keep farmers informed about important
+                            updates and their turn.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            🏢
+                        </div>
+
+                        <h3>Center Management</h3>
+
+                        <p>
+                            Help procurement centers organize
+                            operations efficiently.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================
+             FUTURE MODULES
+        ====================== -->
+
+        <section class="future-section">
+
+            <div class="container">
+
+                <div class="future-box">
+
+
+                    <div>
+
+                        <span class="section-tag">
+                            PLATFORM MODULES
+                        </span>
+
+
+                        <h2>
+                            Built to grow with
+                            <span>your needs.</span>
+                        </h2>
+
+                    </div>
+
+
+                    <div class="module-list">
+
+                        <div class="module">
+                            Dashboard
+                        </div>
+
+                        <div class="module">
+                            Search
+                        </div>
+
+                        <div class="module">
+                            Results & Details
+                        </div>
+
+                        <div class="module">
+                            Profile
+                        </div>
+
+                        <div class="module">
+                            Authentication
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
 
     </main>
 
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
-    <footer>
-        © 2026 Kisan Turn
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+            <div>
+
+                <div class="footer-brand">
+
+                    🌾 Kisan Turn
+
+                </div>
+
+                <p>
+                    Smart Farmer Procurement Queue
+                    & Status Management
+                </p>
+
+            </div>
+
+
+            <p class="copyright">
+
+                © 2026 Kisan Turn. All Rights Reserved.
+
+            </p>
+
+        </div>
+
     </footer>
 
 
+
+    <!-- =========================
+         LOGIN MODAL
+    ========================== -->
+
+    <div class="modal" id="loginModal">
+
+        <div class="modal-content">
+
+            <button
+                class="close-btn"
+                id="closeModal"
+                aria-label="Close login"
+            >
+                ×
+            </button>
+
+
+            <div class="modal-icon">
+                🔐
+            </div>
+
+
+            <h2>Welcome to Kisan Turn</h2>
+
+
+            <p>
+                Authentication module will be connected soon.
+            </p>
+
+
+            <button class="primary-btn modal-close">
+                Continue
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/script.js"></script>
+
 </body>
+
 </html>
