@@ -1,33 +1,45 @@
 KISAN TURN
 │
 ├── HOME
-│   └── Landing / Hero
+│   ├── Introduction
+│   ├── How It Works
+│   └── Features
 │
-├── ABOUT
+├── AUTHENTICATION
+│   ├── Login
+│   ├── Register
+│   └── Forgot Password
 │
-├── SERVICES
-│
-├── DASHBOARD
+├── FARMER DASHBOARD
 │   ├── Overview
-│   ├── Main Function
-│   ├── History
-│   └── Analytics
+│   ├── Current Token
+│   ├── Queue Status
+│   └── Notifications
 │
-├── SEARCH
-│   ├── Search Bar
-│   ├── Filters
-│   └── Search Results
+├── PROCUREMENT
+│   ├── Select Center
+│   ├── Crop Details
+│   ├── Quantity Details
+│   └── Book / Generate Token
 │
-├── RESULTS
-│   ├── Details View
-│   ├── Related Information
-│   └── Download / Export
+├── MY QUEUE
+│   ├── Current Position
+│   ├── Farmers Ahead
+│   ├── Estimated Waiting Time
+│   └── Live Queue Status
 │
-├── PROFILE
-│   ├── Settings
-│   └── Logout
+├── PROCUREMENT STATUS
+│   ├── Registration
+│   ├── Verification
+│   ├── Quality Check
+│   ├── Accepted / Rejected
+│   └── Payment Status
 │
-└── AUTHENTICATION
-    ├── Login
-    ├── Sign Up
-    └── Forgot Password
+├── HISTORY
+│   ├── Previous Procurements
+│   └── Previous Tokens
+│
+└── PROFILE
+    ├── Farmer Details
+    ├── Settings
+    └── Logout
