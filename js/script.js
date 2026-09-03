@@ -601,3 +601,846 @@ moduleCards.forEach(
 
     }
 );
+/* =====================================================
+   KISAN TURN
+   GLOBAL + DASHBOARD JAVASCRIPT
+===================================================== */
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* =============================================
+           GLOBAL MOBILE NAVIGATION
+        ============================================= */
+
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+
+        if (menuBtn && navLinks) {
+
+
+            menuBtn.addEventListener(
+                "click",
+                function () {
+
+                    navLinks.classList.toggle("show");
+
+
+                    if (
+                        navLinks.classList.contains("show")
+                    ) {
+
+                        menuBtn.textContent = "✕";
+
+                    } else {
+
+                        menuBtn.textContent = "☰";
+
+                    }
+
+                }
+            );
+
+
+            const navigationLinks =
+                navLinks.querySelectorAll("a");
+
+
+            navigationLinks.forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            navLinks.classList.remove("show");
+
+                            menuBtn.textContent = "☰";
+
+                        }
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /* =============================================
+           PASSWORD TOGGLE
+           Works on Login/Register/Forgot Password
+        ============================================= */
+
+        const passwordToggles =
+            document.querySelectorAll(".password-toggle");
+
+
+        passwordToggles.forEach(
+            function (toggle) {
+
+
+                toggle.addEventListener(
+                    "click",
+                    function () {
+
+
+                        const wrapper =
+                            toggle.parentElement;
+
+
+                        const input =
+                            wrapper.querySelector("input");
+
+
+                        if (!input) return;
+
+
+                        if (
+                            input.type === "password"
+                        ) {
+
+                            input.type = "text";
+
+                            toggle.textContent = "Hide";
+
+                        } else {
+
+                            input.type = "password";
+
+                            toggle.textContent = "Show";
+
+                        }
+
+
+                    }
+                );
+
+
+            }
+        );
+
+
+
+        /* =============================================
+           DASHBOARD ELEMENTS
+        ============================================= */
+
+        const dashboardSidebar =
+            document.getElementById(
+                "dashboardSidebar"
+            );
+
+
+        const dashboardMenuBtn =
+            document.getElementById(
+                "dashboardMenuBtn"
+            );
+
+
+        const sidebarOverlay =
+            document.getElementById(
+                "sidebarOverlay"
+            );
+
+
+        /* =============================================
+           MOBILE SIDEBAR
+        ============================================= */
+
+        function openSidebar() {
+
+
+            if (dashboardSidebar) {
+
+                dashboardSidebar.classList.add("show");
+
+            }
+
+
+            if (sidebarOverlay) {
+
+                sidebarOverlay.classList.add("show");
+
+            }
+
+
+            document.body.style.overflow =
+                "hidden";
+
+        }
+
+
+
+        function closeSidebar() {
+
+
+            if (dashboardSidebar) {
+
+                dashboardSidebar.classList.remove("show");
+
+            }
+
+
+            if (sidebarOverlay) {
+
+                sidebarOverlay.classList.remove("show");
+
+            }
+
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+
+
+        if (dashboardMenuBtn) {
+
+
+            dashboardMenuBtn.addEventListener(
+                "click",
+                function () {
+
+                    openSidebar();
+
+                }
+            );
+
+        }
+
+
+
+        if (sidebarOverlay) {
+
+
+            sidebarOverlay.addEventListener(
+                "click",
+                function () {
+
+                    closeSidebar();
+
+                }
+            );
+
+        }
+
+
+
+        /* =============================================
+           CURRENT DATE
+        ============================================= */
+
+        const currentDate =
+            document.getElementById(
+                "currentDate"
+            );
+
+
+        if (currentDate) {
+
+
+            const today =
+                new Date();
+
+
+            const options = {
+
+                weekday: "long",
+
+                day: "numeric",
+
+                month: "long",
+
+                year: "numeric"
+
+            };
+
+
+            currentDate.textContent =
+                today.toLocaleDateString(
+                    "en-IN",
+                    options
+                );
+
+        }
+
+
+
+        /* =============================================
+           NOTIFICATION PANEL
+        ============================================= */
+
+        const notificationBtn =
+            document.getElementById(
+                "notificationBtn"
+            );
+
+
+        const notificationPanel =
+            document.getElementById(
+                "notificationPanel"
+            );
+
+
+        const closeNotificationPanel =
+            document.getElementById(
+                "closeNotificationPanel"
+            );
+
+
+        if (
+            notificationBtn &&
+            notificationPanel
+        ) {
+
+
+            notificationBtn.addEventListener(
+                "click",
+                function () {
+
+                    notificationPanel.classList.add(
+                        "show"
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        if (
+            closeNotificationPanel &&
+            notificationPanel
+        ) {
+
+
+            closeNotificationPanel.addEventListener(
+                "click",
+                function () {
+
+                    notificationPanel.classList.remove(
+                        "show"
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /* =============================================
+           ALERT CLOSE
+        ============================================= */
+
+        const alertClose =
+            document.getElementById(
+                "alertClose"
+            );
+
+
+        const dashboardAlert =
+            document.querySelector(
+                ".dashboard-alert"
+            );
+
+
+        if (
+            alertClose &&
+            dashboardAlert
+        ) {
+
+
+            alertClose.addEventListener(
+                "click",
+                function () {
+
+                    dashboardAlert.style.transition =
+                        "all 0.3s ease";
+
+
+                    dashboardAlert.style.opacity =
+                        "0";
+
+
+                    dashboardAlert.style.transform =
+                        "translateY(-10px)";
+
+
+                    setTimeout(
+                        function () {
+
+                            dashboardAlert.style.display =
+                                "none";
+
+                        },
+                        300
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /* =============================================
+           TOAST SYSTEM
+        ============================================= */
+
+        const dashboardToast =
+            document.getElementById(
+                "dashboardToast"
+            );
+
+
+        const toastMessage =
+            document.getElementById(
+                "toastMessage"
+            );
+
+
+        const toastIcon =
+            document.getElementById(
+                "toastIcon"
+            );
+
+
+        function showToast(
+            message,
+            icon = "✓"
+        ) {
+
+
+            if (
+                !dashboardToast ||
+                !toastMessage
+            ) {
+
+                return;
+
+            }
+
+
+            toastMessage.textContent =
+                message;
+
+
+            if (toastIcon) {
+
+                toastIcon.textContent =
+                    icon;
+
+            }
+
+
+            dashboardToast.classList.add(
+                "show"
+            );
+
+
+            setTimeout(
+                function () {
+
+                    dashboardToast.classList.remove(
+                        "show"
+                    );
+
+                },
+                3000
+            );
+
+        }
+
+
+
+        /* =============================================
+           QUICK ACTIONS
+        ============================================= */
+
+        const quickActions =
+            document.querySelectorAll(
+                ".quick-action"
+            );
+
+
+        quickActions.forEach(
+            function (button) {
+
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+
+                        const action =
+                            button.querySelector(
+                                "small"
+                            );
+
+
+                        if (!action) return;
+
+
+                        const actionName =
+                            action.textContent.trim();
+
+
+                        showToast(
+                            actionName +
+                            " feature will open here.",
+                            "🌾"
+                        );
+
+
+                    }
+                );
+
+
+            }
+        );
+
+
+
+        /* =============================================
+           LOGOUT
+        ============================================= */
+
+        const logoutBtn =
+            document.getElementById(
+                "logoutBtn"
+            );
+
+
+        if (logoutBtn) {
+
+
+            logoutBtn.addEventListener(
+                "click",
+                function () {
+
+
+                    const confirmLogout =
+                        confirm(
+                            "Are you sure you want to logout?"
+                        );
+
+
+                    if (confirmLogout) {
+
+
+                        window.location.href =
+                            "index.html";
+
+                    }
+
+
+                }
+            );
+
+        }
+
+
+
+        /* =============================================
+           VIEW ALL ACTIVITY
+        ============================================= */
+
+        const viewAllActivity =
+            document.getElementById(
+                "viewAllActivity"
+            );
+
+
+        if (viewAllActivity) {
+
+
+            viewAllActivity.addEventListener(
+                "click",
+                function () {
+
+                    showToast(
+                        "All activity will be available soon.",
+                        "📋"
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /* =============================================
+           LIVE QUEUE SIMULATION
+
+           STATIC PROTOTYPE ONLY
+
+           This simulates queue updates.
+           Later replace with backend/API/WebSocket.
+        ============================================= */
+
+        const queuePosition =
+            document.getElementById(
+                "queuePosition"
+            );
+
+
+        const farmersAhead =
+            document.getElementById(
+                "farmersAhead"
+            );
+
+
+        const farmersAheadAlert =
+            document.getElementById(
+                "farmersAheadAlert"
+            );
+
+
+        const currentToken =
+            document.getElementById(
+                "currentToken"
+            );
+
+
+        const waitTime =
+            document.getElementById(
+                "waitTime"
+            );
+
+
+        const queueProgressFill =
+            document.getElementById(
+                "queueProgressFill"
+            );
+
+
+        const queueProgressText =
+            document.getElementById(
+                "queueProgressText"
+            );
+
+
+        let currentPosition = 4;
+
+        let currentFarmersAhead = 3;
+
+        let estimatedWait = 25;
+
+        let progress = 80;
+
+        let currentTokenNumber = 39;
+
+
+
+        function updateQueueUI() {
+
+
+            if (queuePosition) {
+
+                queuePosition.textContent =
+                    "#" + currentPosition;
+
+            }
+
+
+            if (farmersAhead) {
+
+                farmersAhead.textContent =
+                    currentFarmersAhead;
+
+            }
+
+
+            if (farmersAheadAlert) {
+
+                farmersAheadAlert.textContent =
+                    currentFarmersAhead;
+
+            }
+
+
+            if (waitTime) {
+
+                waitTime.textContent =
+                    estimatedWait;
+
+            }
+
+
+            if (queueProgressFill) {
+
+                queueProgressFill.style.width =
+                    progress + "%";
+
+            }
+
+
+            if (queueProgressText) {
+
+                queueProgressText.textContent =
+                    progress + "%";
+
+            }
+
+
+            if (currentToken) {
+
+                const formattedToken =
+                    String(
+                        currentTokenNumber
+                    ).padStart(
+                        3,
+                        "0"
+                    );
+
+
+                currentToken.textContent =
+                    "A-" +
+                    formattedToken;
+
+            }
+
+        }
+
+
+
+        function simulateQueueUpdate() {
+
+
+            if (
+                !queuePosition ||
+                currentPosition <= 1
+            ) {
+
+                return;
+
+            }
+
+
+            currentPosition--;
+
+            currentFarmersAhead--;
+
+
+            estimatedWait =
+                Math.max(
+                    5,
+                    estimatedWait - 7
+                );
+
+
+            progress =
+                Math.min(
+                    98,
+                    progress + 7
+                );
+
+
+            currentTokenNumber++;
+
+
+            updateQueueUI();
+
+
+            showToast(
+                "Queue updated! You are now #" +
+                currentPosition +
+                " in the queue.",
+                "📍"
+            );
+
+
+        }
+
+
+
+        /*
+           DEMO UPDATE:
+
+           Every 30 seconds the prototype
+           simulates one farmer being processed.
+
+           Remove this later when connecting
+           your real backend.
+        */
+
+        if (queuePosition) {
+
+
+            setInterval(
+                simulateQueueUpdate,
+                30000
+            );
+
+        }
+
+
+
+        /* =============================================
+           SIDEBAR NAVIGATION ACTIVE STATE
+        ============================================= */
+
+        const dashboardNavLinks =
+            document.querySelectorAll(
+                ".dashboard-nav-link"
+            );
+
+
+        dashboardNavLinks.forEach(
+            function (link) {
+
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+
+                        if (
+                            link.tagName === "A" &&
+                            link.getAttribute("href") === "#"
+                        ) {
+
+
+                            dashboardNavLinks.forEach(
+                                function (item) {
+
+                                    item.classList.remove(
+                                        "active"
+                                    );
+
+                                }
+                            );
+
+
+                            link.classList.add(
+                                "active"
+                            );
+
+
+                            closeSidebar();
+
+                        }
+
+
+                    }
+                );
+
+
+            }
+        );
+
+
+    }
+);
