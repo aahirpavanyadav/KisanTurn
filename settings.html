@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Kisan Turn Farmer Settings"
+    >
+
+    <title>Kisan Turn | Settings</title>
+
+    <link
+        rel="stylesheet"
+        href="css/styles.css"
+    >
+
+</head>
+
+
+<body class="dashboard-body">
+
+
+    <!-- =========================
+         MOBILE SIDEBAR OVERLAY
+    ========================== -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside
+        class="dashboard-sidebar"
+        id="dashboardSidebar"
+    >
+
+
+        <a
+            href="index.html"
+            class="dashboard-brand"
+        >
+
+            <span class="dashboard-brand-icon">
+                🌾
+            </span>
+
+            <span class="dashboard-brand-text">
+                Kisan Turn
+            </span>
+
+        </a>
+
+
+
+        <!-- PROFILE -->
+
+        <div class="sidebar-profile">
+
+            <div class="sidebar-avatar">
+                👨‍🌾
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Farmer Account
+                </strong>
+
+                <span>
+                    ID: KT-10482
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="dashboard-nav">
+
+
+            <p class="nav-section-title">
+                MAIN MENU
+            </p>
+
+
+            <a
+                href="dashboard.html"
+                class="dashboard-nav-link"
+            >
+
+                <span class="nav-icon">
+                    ▦
+                </span>
+
+                Dashboard
+
+            </a>
+
+
+            <a
+                href="#"
+                class="dashboard-nav-link"
+            >
+
+                <span class="nav-icon">
+                    🎫
+                </span>
+
+                My Token
+
+            </a>
+
+
+            <a
+                href="#"
+                class="dashboard-nav-link"
+            >
+
+                <span class="nav-icon">
+                    📍
+                </span>
+
+                Live Queue
+
+            </a>
+
+
+            <a
+                href="#"
+                class="dashboard-nav-link"
+            >
+
+                <span class="nav-icon">
+                    📦
+                </span>
+
+                Procurement Status
+
+            </a>
+
+
+
+            <p class="nav-section-title secondary-nav-title">
+                ACCOUNT
+            </p>
+
+
+            <a
+                href="notification.html"
+                class="dashboard-nav-link"
+            >
+
+                <span class="nav-icon">
+                    🔔
+                </span>
+
+                Notifications
+
+                <span class="nav-notification">
+                    3
+                </span>
+
+            </a>
+
+
+            <a
+                href="settings.html"
+                class="dashboard-nav-link active"
+            >
+
+                <span class="nav-icon">
+                    ⚙
+                </span>
+
+                Settings
+
+            </a>
+
+
+        </nav>
+
+
+
+        <!-- BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+
+            <a
+                href="index.html"
+                class="dashboard-nav-link"
+            >
+
+                <span class="nav-icon">
+                    ↗
+                </span>
+
+                Back to Website
+
+            </a>
+
+
+            <button
+                class="dashboard-nav-link logout-btn"
+                id="logoutBtn"
+            >
+
+                <span class="nav-icon">
+                    ↪
+                </span>
+
+                Logout
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="dashboard-main">
+
+
+        <!-- HEADER -->
+
+        <header class="dashboard-header">
+
+
+            <div class="dashboard-header-left">
+
+
+                <button
+                    class="dashboard-menu-btn"
+                    id="dashboardMenuBtn"
+                    aria-label="Open menu"
+                >
+
+                    ☰
+
+                </button>
+
+
+                <div>
+
+                    <p class="dashboard-date">
+
+                        <span id="currentDate">
+                            Loading date...
+                        </span>
+
+                    </p>
+
+
+                    <h1>
+                        Settings ⚙
+                    </h1>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="dashboard-header-actions">
+
+
+                <a
+                    href="notification.html"
+                    class="header-icon-btn notification-page-btn"
+                    aria-label="Notifications"
+                >
+
+                    🔔
+
+                    <span class="header-notification-dot"></span>
+
+                </a>
+
+
+
+                <div class="header-user">
+
+
+                    <div class="header-user-avatar">
+                        👨‍🌾
+                    </div>
+
+
+                    <div class="header-user-info">
+
+                        <strong>
+                            Farmer
+                        </strong>
+
+                        <span>
+                            Verified Account
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =========================
+             SETTINGS CONTENT
+        ========================== -->
+
+        <section class="settings-page-content">
+
+
+            <!-- PAGE INTRO -->
+
+            <div class="settings-page-top">
+
+
+                <div>
+
+                    <span class="card-eyebrow">
+                        ACCOUNT MANAGEMENT
+                    </span>
+
+
+                    <h2>
+                        Manage Your Account
+                    </h2>
+
+
+                    <p>
+                        Update your personal information, preferences and account settings.
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 PROFILE SETTINGS
+            ========================== -->
+
+            <div class="settings-card">
+
+
+                <div class="settings-card-header">
+
+
+                    <div>
+
+                        <div class="settings-title-row">
+
+                            <div class="settings-main-icon">
+                                👨‍🌾
+                            </div>
+
+
+                            <div>
+
+                                <h3>
+                                    Profile Information
+                                </h3>
+
+                                <p>
+                                    Manage your personal details.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="profile-settings-top">
+
+
+                    <div class="large-profile-avatar">
+
+                        👨‍🌾
+
+                    </div>
+
+
+                    <div>
+
+                        <h4>
+                            Farmer Account
+                        </h4>
+
+                        <p>
+                            Kisan Turn ID: KT-10482
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="settings-form-grid">
+
+
+                    <div class="settings-input-group">
+
+                        <label for="farmerName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="farmerName"
+                            value="Farmer Name"
+                        >
+
+                    </div>
+
+
+
+                    <div class="settings-input-group">
+
+                        <label for="farmerPhone">
+                            Mobile Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="farmerPhone"
+                            value="+91 98765 43210"
+                        >
+
+                    </div>
+
+
+
+                    <div class="settings-input-group">
+
+                        <label for="farmerEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="farmerEmail"
+                            value="farmer@example.com"
+                        >
+
+                    </div>
+
+
+
+                    <div class="settings-input-group">
+
+                        <label for="farmerVillage">
+                            Village / Location
+                        </label>
+
+                        <input
+                            type="text"
+                            id="farmerVillage"
+                            value="Your Village"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="settings-save-row">
+
+                    <button
+                        class="settings-save-btn"
+                        id="saveProfileBtn"
+                    >
+
+                        Save Changes
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 NOTIFICATION SETTINGS
+            ========================== -->
+
+            <div class="settings-card">
+
+
+                <div class="settings-card-header">
+
+
+                    <div class="settings-title-row">
+
+
+                        <div class="settings-main-icon notification-setting-icon">
+                            🔔
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Notification Preferences
+                            </h3>
+
+                            <p>
+                                Choose which updates you want to receive.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="settings-options-list">
+
+
+                    <!-- OPTION -->
+
+                    <div class="settings-option">
+
+                        <div>
+
+                            <h4>
+                                Queue Updates
+                            </h4>
+
+                            <p>
+                                Get notified when your queue position changes.
+                            </p>
+
+                        </div>
+
+
+                        <label class="settings-switch">
+
+                            <input
+                                type="checkbox"
+                                checked
+                            >
+
+                            <span class="settings-slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- OPTION -->
+
+                    <div class="settings-option">
+
+                        <div>
+
+                            <h4>
+                                Your Turn Alert
+                            </h4>
+
+                            <p>
+                                Receive an alert when your turn is approaching.
+                            </p>
+
+                        </div>
+
+
+                        <label class="settings-switch">
+
+                            <input
+                                type="checkbox"
+                                checked
+                            >
+
+                            <span class="settings-slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- OPTION -->
+
+                    <div class="settings-option">
+
+                        <div>
+
+                            <h4>
+                                Procurement Updates
+                            </h4>
+
+                            <p>
+                                Get updates about your procurement request.
+                            </p>
+
+                        </div>
+
+
+                        <label class="settings-switch">
+
+                            <input
+                                type="checkbox"
+                                checked
+                            >
+
+                            <span class="settings-slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- OPTION -->
+
+                    <div class="settings-option">
+
+                        <div>
+
+                            <h4>
+                                General Announcements
+                            </h4>
+
+                            <p>
+                                Receive important updates and announcements.
+                            </p>
+
+                        </div>
+
+
+                        <label class="settings-switch">
+
+                            <input
+                                type="checkbox"
+                            >
+
+                            <span class="settings-slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 LANGUAGE
+            ========================== -->
+
+            <div class="settings-card">
+
+
+                <div class="settings-card-header">
+
+
+                    <div class="settings-title-row">
+
+
+                        <div class="settings-main-icon language-setting-icon">
+                            🌐
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Language Preference
+                            </h3>
+
+                            <p>
+                                Select your preferred language.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="language-options">
+
+
+                    <button
+                        class="language-option active"
+                        data-language="English"
+                    >
+
+                        <span>
+                            🇬🇧
+                        </span>
+
+                        English
+
+                    </button>
+
+
+                    <button
+                        class="language-option"
+                        data-language="Hindi"
+                    >
+
+                        <span>
+                            🇮🇳
+                        </span>
+
+                        हिन्दी
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 SECURITY
+            ========================== -->
+
+            <div class="settings-card">
+
+
+                <div class="settings-card-header">
+
+
+                    <div class="settings-title-row">
+
+
+                        <div class="settings-main-icon security-setting-icon">
+                            🔒
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Security
+                            </h3>
+
+                            <p>
+                                Keep your account secure.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="settings-security-option">
+
+
+                    <div>
+
+                        <h4>
+                            Password
+                        </h4>
+
+                        <p>
+                            Last updated recently
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="settings-outline-btn"
+                        id="changePasswordBtn"
+                    >
+
+                        Change Password
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 APPEARANCE
+            ========================== -->
+
+            <div class="settings-card">
+
+
+                <div class="settings-card-header">
+
+
+                    <div class="settings-title-row">
+
+
+                        <div class="settings-main-icon appearance-setting-icon">
+                            ☀
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Appearance
+                            </h3>
+
+                            <p>
+                                Customize how Kisan Turn looks.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="appearance-options">
+
+
+                    <button
+                        class="appearance-option active"
+                        data-theme="light"
+                    >
+
+                        <span class="appearance-preview light-preview">
+
+                            ☀
+
+                        </span>
+
+
+                        <strong>
+                            Light
+                        </strong>
+
+                    </button>
+
+
+
+                    <button
+                        class="appearance-option"
+                        data-theme="dark"
+                    >
+
+                        <span class="appearance-preview dark-preview">
+
+                            ☾
+
+                        </span>
+
+
+                        <strong>
+                            Dark
+                        </strong>
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 DANGER ZONE
+            ========================== -->
+
+            <div class="settings-card danger-settings-card">
+
+
+                <div class="settings-card-header">
+
+
+                    <div class="settings-title-row">
+
+
+                        <div class="settings-main-icon danger-setting-icon">
+                            🚪
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Account Actions
+                            </h3>
+
+                            <p>
+                                Sign out from your Kisan Turn account.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="settings-security-option">
+
+
+                    <div>
+
+                        <h4>
+                            Logout
+                        </h4>
+
+                        <p>
+                            You can log in again anytime.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="settings-logout-btn"
+                        id="settingsLogoutBtn"
+                    >
+
+                        Logout
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         CHANGE PASSWORD MODAL
+    ========================== -->
+
+    <div
+        class="settings-modal"
+        id="passwordModal"
+    >
+
+
+        <div class="settings-modal-box">
+
+
+            <button
+                class="settings-modal-close"
+                id="closePasswordModal"
+            >
+
+                ×
+
+            </button>
+
+
+            <div class="settings-modal-icon">
+
+                🔒
+
+            </div>
+
+
+            <h3>
+                Change Password
+            </h3>
+
+
+            <p>
+                Create a strong password to protect your account.
+            </p>
+
+
+
+            <div class="settings-input-group">
+
+                <label for="currentPassword">
+                    Current Password
+                </label>
+
+                <input
+                    type="password"
+                    id="currentPassword"
+                    placeholder="Enter current password"
+                >
+
+            </div>
+
+
+
+            <div class="settings-input-group">
+
+                <label for="newPassword">
+                    New Password
+                </label>
+
+                <input
+                    type="password"
+                    id="newPassword"
+                    placeholder="Enter new password"
+                >
+
+            </div>
+
+
+
+            <div class="settings-input-group">
+
+                <label for="confirmPassword">
+                    Confirm New Password
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm new password"
+                >
+
+            </div>
+
+
+
+            <button
+                class="settings-save-btn full-width-btn"
+                id="updatePasswordBtn"
+            >
+
+                Update Password
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- TOAST -->
+
+    <div
+        class="dashboard-toast"
+        id="dashboardToast"
+    >
+
+        <span id="toastIcon">
+            ✓
+        </span>
+
+        <p id="toastMessage">
+            Action completed successfully.
+        </p>
+
+    </div>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

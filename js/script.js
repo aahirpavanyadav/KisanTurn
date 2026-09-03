@@ -1444,3 +1444,1180 @@ document.addEventListener(
 
     }
 );
+/* =====================================================
+   KISAN TURN - NOTIFICATION PAGE
+===================================================== */
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        const markAllReadBtn =
+            document.getElementById(
+                "markAllReadBtn"
+            );
+
+
+        const clearAllBtn =
+            document.getElementById(
+                "clearAllBtn"
+            );
+
+
+        const notificationCards =
+            document.querySelectorAll(
+                "[data-notification]"
+            );
+
+
+        const unreadNotificationCount =
+            document.getElementById(
+                "unreadNotificationCount"
+            );
+
+
+        const totalNotificationCount =
+            document.getElementById(
+                "totalNotificationCount"
+            );
+
+
+        const notificationCount =
+            document.getElementById(
+                "notificationCount"
+            );
+
+
+        const notificationEmptyState =
+            document.getElementById(
+                "notificationEmptyState"
+            );
+
+
+        /* =============================================
+           UPDATE COUNTS
+        ============================================= */
+
+        function updateNotificationCounts() {
+
+
+            const allCards =
+                document.querySelectorAll(
+                    "[data-notification]"
+                );
+
+
+            const unreadCards =
+                document.querySelectorAll(
+                    "[data-notification].unread"
+                );
+
+
+            const total =
+                allCards.length;
+
+
+            const unread =
+                unreadCards.length;
+
+
+            if (
+                totalNotificationCount
+            ) {
+
+                totalNotificationCount.textContent =
+                    total;
+
+            }
+
+
+            if (
+                unreadNotificationCount
+            ) {
+
+                unreadNotificationCount.textContent =
+                    unread;
+
+            }
+
+
+            if (
+                notificationCount
+            ) {
+
+
+                notificationCount.textContent =
+                    unread;
+
+
+                if (unread === 0) {
+
+                    notificationCount.style.display =
+                        "none";
+
+                } else {
+
+                    notificationCount.style.display =
+                        "grid";
+
+                }
+
+            }
+
+
+            if (
+                notificationEmptyState
+            ) {
+
+
+                if (total === 0) {
+
+                    notificationEmptyState.classList.add(
+                        "show"
+                    );
+
+                } else {
+
+                    notificationEmptyState.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+
+        }
+
+
+
+        /* =============================================
+           MARK SINGLE NOTIFICATION AS READ
+        ============================================= */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+
+                if (
+                    event.target.classList.contains(
+                        "notification-read-btn"
+                    )
+                ) {
+
+
+                    const card =
+                        event.target.closest(
+                            "[data-notification]"
+                        );
+
+
+                    if (!card) return;
+
+
+                    card.classList.remove(
+                        "unread"
+                    );
+
+
+                    const unreadDot =
+                        card.querySelector(
+                            ".unread-dot"
+                        );
+
+
+                    if (unreadDot) {
+
+                        unreadDot.remove();
+
+                    }
+
+
+                    event.target.remove();
+
+
+                    updateNotificationCounts();
+
+
+                    if (
+                        typeof showToast ===
+                        "function"
+                    ) {
+
+                        showToast(
+                            "Notification marked as read.",
+                            "✓"
+                        );
+
+                    }
+
+                }
+
+
+            }
+        );
+
+
+
+        /* =============================================
+           MARK ALL AS READ
+        ============================================= */
+
+        if (markAllReadBtn) {
+
+
+            markAllReadBtn.addEventListener(
+                "click",
+                function () {
+
+
+                    const unreadCards =
+                        document.querySelectorAll(
+                            "[data-notification].unread"
+                        );
+
+
+                    if (
+                        unreadCards.length === 0
+                    ) {
+
+
+                        if (
+                            typeof showToast ===
+                            "function"
+                        ) {
+
+                            showToast(
+                                "All notifications are already read.",
+                                "✓"
+                            );
+
+                        }
+
+
+                        return;
+
+                    }
+
+
+                    unreadCards.forEach(
+                        function (card) {
+
+
+                            card.classList.remove(
+                                "unread"
+                            );
+
+
+                            const unreadDot =
+                                card.querySelector(
+                                    ".unread-dot"
+                                );
+
+
+                            if (unreadDot) {
+
+                                unreadDot.remove();
+
+                            }
+
+
+                            const readButton =
+                                card.querySelector(
+                                    ".notification-read-btn"
+                                );
+
+
+                            if (readButton) {
+
+                                readButton.remove();
+
+                            }
+
+
+                        }
+                    );
+
+
+                    updateNotificationCounts();
+
+
+                    if (
+                        typeof showToast ===
+                        "function"
+                    ) {
+
+                        showToast(
+                            "All notifications marked as read.",
+                            "✓"
+                        );
+
+                    }
+
+
+                }
+            );
+
+        }
+
+
+
+        /* =============================================
+           DELETE SINGLE NOTIFICATION
+        ============================================= */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+
+                if (
+                    event.target.classList.contains(
+                        "notification-delete-btn"
+                    )
+                ) {
+
+
+                    const card =
+                        event.target.closest(
+                            "[data-notification]"
+                        );
+
+
+                    if (!card) return;
+
+
+                    card.style.opacity =
+                        "0";
+
+
+                    card.style.transform =
+                        "translateX(30px)";
+
+
+                    setTimeout(
+                        function () {
+
+                            card.remove();
+
+
+                            updateNotificationCounts();
+
+
+                            if (
+                                typeof showToast ===
+                                "function"
+                            ) {
+
+                                showToast(
+                                    "Notification deleted.",
+                                    "🗑"
+                                );
+
+                            }
+
+                        },
+                        250
+                    );
+
+
+                }
+
+
+            }
+        );
+
+
+
+        /* =============================================
+           CLEAR ALL NOTIFICATIONS
+        ============================================= */
+
+        if (clearAllBtn) {
+
+
+            clearAllBtn.addEventListener(
+                "click",
+                function () {
+
+
+                    const cards =
+                        document.querySelectorAll(
+                            "[data-notification]"
+                        );
+
+
+                    if (
+                        cards.length === 0
+                    ) {
+
+
+                        if (
+                            typeof showToast ===
+                            "function"
+                        ) {
+
+                            showToast(
+                                "No notifications to clear.",
+                                "🔔"
+                            );
+
+                        }
+
+
+                        return;
+
+                    }
+
+
+                    const confirmClear =
+                        confirm(
+                            "Are you sure you want to clear all notifications?"
+                        );
+
+
+                    if (!confirmClear) {
+
+                        return;
+
+                    }
+
+
+                    cards.forEach(
+                        function (
+                            card,
+                            index
+                        ) {
+
+
+                            setTimeout(
+                                function () {
+
+
+                                    card.style.opacity =
+                                        "0";
+
+
+                                    card.style.transform =
+                                        "translateX(40px)";
+
+
+                                    setTimeout(
+                                        function () {
+
+                                            card.remove();
+
+
+                                            updateNotificationCounts();
+
+                                        },
+                                        250
+                                    );
+
+
+                                },
+                                index * 80
+                            );
+
+
+                        }
+                    );
+
+
+                    setTimeout(
+                        function () {
+
+
+                            if (
+                                typeof showToast ===
+                                "function"
+                            ) {
+
+                                showToast(
+                                    "All notifications cleared.",
+                                    "🗑"
+                                );
+
+                            }
+
+
+                        },
+                        cards.length * 80 + 300
+                    );
+
+
+                }
+            );
+
+        }
+
+
+
+        /* =============================================
+           INITIAL COUNT
+        ============================================= */
+
+        updateNotificationCounts();
+
+
+    }
+);
+/* =====================================================
+   KISAN TURN - SETTINGS PAGE
+===================================================== */
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* =============================================
+           SAVE PROFILE
+        ============================================= */
+
+        const saveProfileBtn =
+            document.getElementById(
+                "saveProfileBtn"
+            );
+
+
+        if (saveProfileBtn) {
+
+
+            saveProfileBtn.addEventListener(
+                "click",
+                function () {
+
+
+                    const farmerName =
+                        document.getElementById(
+                            "farmerName"
+                        );
+
+
+                    const farmerPhone =
+                        document.getElementById(
+                            "farmerPhone"
+                        );
+
+
+                    if (
+                        farmerName.value.trim() === ""
+                    ) {
+
+
+                        showToast(
+                            "Please enter your name.",
+                            "⚠"
+                        );
+
+
+                        farmerName.focus();
+
+                        return;
+
+                    }
+
+
+                    if (
+                        farmerPhone.value.trim() === ""
+                    ) {
+
+
+                        showToast(
+                            "Please enter your mobile number.",
+                            "⚠"
+                        );
+
+
+                        farmerPhone.focus();
+
+                        return;
+
+                    }
+
+
+                    saveProfileBtn.textContent =
+                        "Saving...";
+
+
+                    saveProfileBtn.disabled =
+                        true;
+
+
+                    setTimeout(
+                        function () {
+
+
+                            saveProfileBtn.textContent =
+                                "Save Changes";
+
+
+                            saveProfileBtn.disabled =
+                                false;
+
+
+                            showToast(
+                                "Profile updated successfully.",
+                                "✓"
+                            );
+
+
+                        },
+                        700
+                    );
+
+
+                }
+            );
+
+        }
+
+
+
+        /* =============================================
+           NOTIFICATION SWITCHES
+        ============================================= */
+
+        const notificationSwitches =
+            document.querySelectorAll(
+                ".settings-switch input"
+            );
+
+
+        notificationSwitches.forEach(
+            function (toggle) {
+
+
+                toggle.addEventListener(
+                    "change",
+                    function () {
+
+
+                        const option =
+                            this.closest(
+                                ".settings-option"
+                            );
+
+
+                        const title =
+                            option.querySelector(
+                                "h4"
+                            ).textContent;
+
+
+                        if (this.checked) {
+
+
+                            showToast(
+                                title +
+                                " enabled.",
+                                "🔔"
+                            );
+
+
+                        } else {
+
+
+                            showToast(
+                                title +
+                                " disabled.",
+                                "🔕"
+                            );
+
+
+                        }
+
+
+                    }
+                );
+
+
+            }
+        );
+
+
+
+        /* =============================================
+           LANGUAGE SELECTION
+        ============================================= */
+
+        const languageOptions =
+            document.querySelectorAll(
+                ".language-option"
+            );
+
+
+        languageOptions.forEach(
+            function (button) {
+
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+
+                        languageOptions.forEach(
+                            function (option) {
+
+                                option.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        this.classList.add(
+                            "active"
+                        );
+
+
+                        const language =
+                            this.dataset.language;
+
+
+                        showToast(
+                            language +
+                            " selected.",
+                            "🌐"
+                        );
+
+
+                    }
+                );
+
+
+            }
+        );
+
+
+
+        /* =============================================
+           DARK / LIGHT MODE
+        ============================================= */
+
+        const appearanceOptions =
+            document.querySelectorAll(
+                ".appearance-option"
+            );
+
+
+        appearanceOptions.forEach(
+            function (button) {
+
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+
+                        appearanceOptions.forEach(
+                            function (option) {
+
+                                option.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        this.classList.add(
+                            "active"
+                        );
+
+
+                        const theme =
+                            this.dataset.theme;
+
+
+                        if (theme === "dark") {
+
+
+                            document.body.classList.add(
+                                "dark-mode"
+                            );
+
+
+                            localStorage.setItem(
+                                "kisanTurnTheme",
+                                "dark"
+                            );
+
+
+                            showToast(
+                                "Dark mode enabled.",
+                                "☾"
+                            );
+
+
+                        } else {
+
+
+                            document.body.classList.remove(
+                                "dark-mode"
+                            );
+
+
+                            localStorage.setItem(
+                                "kisanTurnTheme",
+                                "light"
+                            );
+
+
+                            showToast(
+                                "Light mode enabled.",
+                                "☀"
+                            );
+
+
+                        }
+
+
+                    }
+                );
+
+
+            }
+        );
+
+
+
+        /* =============================================
+           LOAD SAVED THEME
+        ============================================= */
+
+        const savedTheme =
+            localStorage.getItem(
+                "kisanTurnTheme"
+            );
+
+
+        if (
+            savedTheme === "dark"
+        ) {
+
+
+            document.body.classList.add(
+                "dark-mode"
+            );
+
+
+            appearanceOptions.forEach(
+                function (option) {
+
+                    option.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            const darkOption =
+                document.querySelector(
+                    '[data-theme="dark"]'
+                );
+
+
+            if (darkOption) {
+
+                darkOption.classList.add(
+                    "active"
+                );
+
+            }
+
+
+        }
+
+
+
+        /* =============================================
+           PASSWORD MODAL
+        ============================================= */
+
+        const changePasswordBtn =
+            document.getElementById(
+                "changePasswordBtn"
+            );
+
+
+        const passwordModal =
+            document.getElementById(
+                "passwordModal"
+            );
+
+
+        const closePasswordModal =
+            document.getElementById(
+                "closePasswordModal"
+            );
+
+
+        if (changePasswordBtn) {
+
+
+            changePasswordBtn.addEventListener(
+                "click",
+                function () {
+
+
+                    passwordModal.classList.add(
+                        "show"
+                    );
+
+
+                }
+            );
+
+        }
+
+
+        if (closePasswordModal) {
+
+
+            closePasswordModal.addEventListener(
+                "click",
+                function () {
+
+
+                    passwordModal.classList.remove(
+                        "show"
+                    );
+
+
+                }
+            );
+
+        }
+
+
+
+        /* CLOSE MODAL ON BACKGROUND CLICK */
+
+        if (passwordModal) {
+
+
+            passwordModal.addEventListener(
+                "click",
+                function (event) {
+
+
+                    if (
+                        event.target === passwordModal
+                    ) {
+
+
+                        passwordModal.classList.remove(
+                            "show"
+                        );
+
+
+                    }
+
+
+                }
+            );
+
+        }
+
+
+
+        /* =============================================
+           UPDATE PASSWORD
+        ============================================= */
+
+        const updatePasswordBtn =
+            document.getElementById(
+                "updatePasswordBtn"
+            );
+
+
+        if (updatePasswordBtn) {
+
+
+            updatePasswordBtn.addEventListener(
+                "click",
+                function () {
+
+
+                    const currentPassword =
+                        document.getElementById(
+                            "currentPassword"
+                        );
+
+
+                    const newPassword =
+                        document.getElementById(
+                            "newPassword"
+                        );
+
+
+                    const confirmPassword =
+                        document.getElementById(
+                            "confirmPassword"
+                        );
+
+
+                    if (
+                        currentPassword.value === "" ||
+                        newPassword.value === "" ||
+                        confirmPassword.value === ""
+                    ) {
+
+
+                        showToast(
+                            "Please fill all password fields.",
+                            "⚠"
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    if (
+                        newPassword.value.length < 6
+                    ) {
+
+
+                        showToast(
+                            "Password must be at least 6 characters.",
+                            "⚠"
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    if (
+                        newPassword.value !==
+                        confirmPassword.value
+                    ) {
+
+
+                        showToast(
+                            "Passwords do not match.",
+                            "⚠"
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    updatePasswordBtn.textContent =
+                        "Updating...";
+
+
+                    updatePasswordBtn.disabled =
+                        true;
+
+
+                    setTimeout(
+                        function () {
+
+
+                            updatePasswordBtn.textContent =
+                                "Update Password";
+
+
+                            updatePasswordBtn.disabled =
+                                false;
+
+
+                            passwordModal.classList.remove(
+                                "show"
+                            );
+
+
+                            currentPassword.value = "";
+
+                            newPassword.value = "";
+
+                            confirmPassword.value = "";
+
+
+                            showToast(
+                                "Password updated successfully.",
+                                "✓"
+                            );
+
+
+                        },
+                        800
+                    );
+
+
+                }
+            );
+
+        }
+
+
+
+        /* =============================================
+           SETTINGS LOGOUT
+        ============================================= */
+
+        const settingsLogoutBtn =
+            document.getElementById(
+                "settingsLogoutBtn"
+            );
+
+
+        if (settingsLogoutBtn) {
+
+
+            settingsLogoutBtn.addEventListener(
+                "click",
+                function () {
+
+
+                    const confirmLogout =
+                        confirm(
+                            "Are you sure you want to logout?"
+                        );
+
+
+                    if (!confirmLogout) {
+
+                        return;
+
+                    }
+
+
+                    showToast(
+                        "Logging out...",
+                        "↪"
+                    );
+
+
+                    setTimeout(
+                        function () {
+
+                            window.location.href =
+                                "index.html";
+
+                        },
+                        700
+                    );
+
+
+                }
+            );
+
+        }
+
+
+    }
+);

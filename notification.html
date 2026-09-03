@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Kisan Turn Notifications"
+    >
+
+    <title>Kisan Turn | Notifications</title>
+
+    <link
+        rel="stylesheet"
+        href="css/styles.css"
+    >
+
+</head>
+
+
+<body class="dashboard-body">
+
+
+    <!-- =========================
+         MOBILE SIDEBAR OVERLAY
+    ========================== -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside
+        class="dashboard-sidebar"
+        id="dashboardSidebar"
+    >
+
+
+        <!-- BRAND -->
+
+        <a
+            href="index.html"
+            class="dashboard-brand"
+        >
+
+            <span class="dashboard-brand-icon">
+                🌾
+            </span>
+
+            <span class="dashboard-brand-text">
+                Kisan Turn
+            </span>
+
+        </a>
+
+
+
+        <!-- FARMER PROFILE -->
+
+        <div class="sidebar-profile">
+
+            <div class="sidebar-avatar">
+
+                👨‍🌾
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Farmer Account
+                </strong>
+
+                <span>
+                    ID: KT-10482
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="dashboard-nav">
+
+
+            <p class="nav-section-title">
+                MAIN MENU
+            </p>
+
+
+            <a
+                href="dashboard.html"
+                class="dashboard-nav-link"
+            >
+
+                <span class="nav-icon">
+                    ▦
+                </span>
+
+                Dashboard
+
+            </a>
+
+
+            <a
+                href="#"
+                class="dashboard-nav-link"
+            >
+
+                <span class="nav-icon">
+                    🎫
+                </span>
+
+                My Token
+
+            </a>
+
+
+            <a
+                href="#"
+                class="dashboard-nav-link"
+            >
+
+                <span class="nav-icon">
+                    📍
+                </span>
+
+                Live Queue
+
+            </a>
+
+
+            <a
+                href="#"
+                class="dashboard-nav-link"
+            >
+
+                <span class="nav-icon">
+                    📦
+                </span>
+
+                Procurement Status
+
+            </a>
+
+
+
+            <p class="nav-section-title secondary-nav-title">
+                ACCOUNT
+            </p>
+
+
+            <a
+                href="notification.html"
+                class="dashboard-nav-link active"
+            >
+
+                <span class="nav-icon">
+                    🔔
+                </span>
+
+                Notifications
+
+                <span
+                    class="nav-notification"
+                    id="notificationCount"
+                >
+                    3
+                </span>
+
+            </a>
+
+
+            <a
+                href="settings.html"
+                class="dashboard-nav-link"
+            >
+
+                <span class="nav-icon">
+                    ⚙
+                </span>
+
+                Settings
+
+            </a>
+
+
+        </nav>
+
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+
+            <a
+                href="index.html"
+                class="dashboard-nav-link"
+            >
+
+                <span class="nav-icon">
+                    ↗
+                </span>
+
+                Back to Website
+
+            </a>
+
+
+            <button
+                class="dashboard-nav-link logout-btn"
+                id="logoutBtn"
+            >
+
+                <span class="nav-icon">
+                    ↪
+                </span>
+
+                Logout
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="dashboard-main">
+
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+
+        <header class="dashboard-header">
+
+
+            <div class="dashboard-header-left">
+
+
+                <button
+                    class="dashboard-menu-btn"
+                    id="dashboardMenuBtn"
+                    aria-label="Open menu"
+                >
+
+                    ☰
+
+                </button>
+
+
+                <div>
+
+                    <p class="dashboard-date">
+
+                        <span id="currentDate">
+                            Loading date...
+                        </span>
+
+                    </p>
+
+
+                    <h1>
+                        Notifications 🔔
+                    </h1>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="dashboard-header-actions">
+
+
+                <a
+                    href="notification.html"
+                    class="header-icon-btn notification-page-btn active"
+                    aria-label="Notifications"
+                >
+
+                    🔔
+
+                    <span class="header-notification-dot"></span>
+
+                </a>
+
+
+                <div class="header-user">
+
+                    <div class="header-user-avatar">
+
+                        👨‍🌾
+
+                    </div>
+
+
+                    <div class="header-user-info">
+
+                        <strong>
+                            Farmer
+                        </strong>
+
+                        <span>
+                            Verified Account
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =========================
+             NOTIFICATION PAGE
+        ========================== -->
+
+        <section class="notification-page-content">
+
+
+            <!-- PAGE TOP -->
+
+            <div class="notification-page-top">
+
+
+                <div>
+
+                    <span class="card-eyebrow">
+                        STAY UPDATED
+                    </span>
+
+                    <h2>
+                        Your Recent Updates
+                    </h2>
+
+                    <p>
+                        Track queue movements, procurement updates and important announcements.
+                    </p>
+
+                </div>
+
+
+
+                <div class="notification-actions">
+
+
+                    <button
+                        class="notification-action-btn"
+                        id="markAllReadBtn"
+                    >
+
+                        ✓ Mark all as read
+
+                    </button>
+
+
+                    <button
+                        class="notification-action-btn danger"
+                        id="clearAllBtn"
+                    >
+
+                        🗑 Clear all
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- NOTIFICATION STATS -->
+
+            <div class="notification-stats">
+
+
+                <div class="notification-stat-card">
+
+                    <div class="notification-stat-icon">
+                        🔔
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Total Notifications
+                        </span>
+
+                        <strong id="totalNotificationCount">
+                            6
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="notification-stat-card">
+
+                    <div class="notification-stat-icon unread-stat">
+                        ✦
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Unread
+                        </span>
+
+                        <strong id="unreadNotificationCount">
+                            3
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="notification-stat-card">
+
+                    <div class="notification-stat-icon queue-stat">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Queue Updates
+                        </span>
+
+                        <strong>
+                            2
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 TODAY
+            ========================== -->
+
+            <div class="notification-section">
+
+
+                <div class="notification-section-heading">
+
+                    <h3>
+                        Today
+                    </h3>
+
+                    <span>
+                        Latest updates
+                    </span>
+
+                </div>
+
+
+
+                <div
+                    class="notification-list-page"
+                    id="notificationList"
+                >
+
+
+                    <!-- NOTIFICATION 1 -->
+
+                    <article
+                        class="notification-card unread"
+                        data-notification
+                    >
+
+                        <div class="notification-card-icon queue">
+
+                            📍
+
+                        </div>
+
+
+                        <div class="notification-card-content">
+
+                            <div class="notification-card-title">
+
+                                <div>
+
+                                    <h4>
+                                        Queue Position Updated
+                                    </h4>
+
+                                    <p>
+                                        Your current position is now <strong>#4</strong>. Only 3 farmers are ahead of you.
+                                    </p>
+
+                                </div>
+
+
+                                <span class="unread-dot"></span>
+
+                            </div>
+
+
+                            <div class="notification-card-footer">
+
+                                <span>
+                                    Just now
+                                </span>
+
+                                <button class="notification-read-btn">
+
+                                    Mark as read
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- NOTIFICATION 2 -->
+
+                    <article
+                        class="notification-card unread"
+                        data-notification
+                    >
+
+                        <div class="notification-card-icon warning">
+
+                            ⏱
+
+                        </div>
+
+
+                        <div class="notification-card-content">
+
+                            <div class="notification-card-title">
+
+                                <div>
+
+                                    <h4>
+                                        Your Turn Is Approaching
+                                    </h4>
+
+                                    <p>
+                                        Your estimated waiting time is approximately 25 minutes. Please stay prepared.
+                                    </p>
+
+                                </div>
+
+
+                                <span class="unread-dot"></span>
+
+                            </div>
+
+
+                            <div class="notification-card-footer">
+
+                                <span>
+                                    10 minutes ago
+                                </span>
+
+                                <button class="notification-read-btn">
+
+                                    Mark as read
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- NOTIFICATION 3 -->
+
+                    <article
+                        class="notification-card unread"
+                        data-notification
+                    >
+
+                        <div class="notification-card-icon success">
+
+                            ✓
+
+                        </div>
+
+
+                        <div class="notification-card-content">
+
+                            <div class="notification-card-title">
+
+                                <div>
+
+                                    <h4>
+                                        Token Successfully Generated
+                                    </h4>
+
+                                    <p>
+                                        Your procurement token <strong>A-043</strong> is active and ready for tracking.
+                                    </p>
+
+                                </div>
+
+
+                                <span class="unread-dot"></span>
+
+                            </div>
+
+
+                            <div class="notification-card-footer">
+
+                                <span>
+                                    Today · 9:30 AM
+                                </span>
+
+                                <button class="notification-read-btn">
+
+                                    Mark as read
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 EARLIER
+            ========================== -->
+
+            <div class="notification-section earlier-notification-section">
+
+
+                <div class="notification-section-heading">
+
+                    <h3>
+                        Earlier
+                    </h3>
+
+                    <span>
+                        Previous updates
+                    </span>
+
+                </div>
+
+
+
+                <div class="notification-list-page">
+
+
+                    <!-- NOTIFICATION 4 -->
+
+                    <article
+                        class="notification-card"
+                        data-notification
+                    >
+
+                        <div class="notification-card-icon info">
+
+                            📦
+
+                        </div>
+
+
+                        <div class="notification-card-content">
+
+                            <div class="notification-card-title">
+
+                                <div>
+
+                                    <h4>
+                                        Procurement Request Received
+                                    </h4>
+
+                                    <p>
+                                        Your request for procurement of 25 quintals of wheat has been registered.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="notification-card-footer">
+
+                                <span>
+                                    Yesterday · 4:20 PM
+                                </span>
+
+                                <button class="notification-delete-btn">
+
+                                    Delete
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- NOTIFICATION 5 -->
+
+                    <article
+                        class="notification-card"
+                        data-notification
+                    >
+
+                        <div class="notification-card-icon center">
+
+                            🏢
+
+                        </div>
+
+
+                        <div class="notification-card-content">
+
+                            <div class="notification-card-title">
+
+                                <div>
+
+                                    <h4>
+                                        Procurement Center Assigned
+                                    </h4>
+
+                                    <p>
+                                        Your procurement center has been assigned successfully.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="notification-card-footer">
+
+                                <span>
+                                    Yesterday · 3:45 PM
+                                </span>
+
+                                <button class="notification-delete-btn">
+
+                                    Delete
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- NOTIFICATION 6 -->
+
+                    <article
+                        class="notification-card"
+                        data-notification
+                    >
+
+                        <div class="notification-card-icon info">
+
+                            ℹ
+
+                        </div>
+
+
+                        <div class="notification-card-content">
+
+                            <div class="notification-card-title">
+
+                                <div>
+
+                                    <h4>
+                                        Welcome to Kisan Turn
+                                    </h4>
+
+                                    <p>
+                                        Your farmer account has been successfully created and verified.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="notification-card-footer">
+
+                                <span>
+                                    2 days ago
+                                </span>
+
+                                <button class="notification-delete-btn">
+
+                                    Delete
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                class="notification-empty-state"
+                id="notificationEmptyState"
+            >
+
+                <div>
+
+                    🔔
+
+                </div>
+
+                <h3>
+                    No notifications
+                </h3>
+
+                <p>
+                    You're all caught up! New updates will appear here.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         TOAST
+    ========================== -->
+
+    <div
+        class="dashboard-toast"
+        id="dashboardToast"
+    >
+
+        <span id="toastIcon">
+            ✓
+        </span>
+
+        <p id="toastMessage">
+            Action completed successfully.
+        </p>
+
+    </div>
+
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
