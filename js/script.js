@@ -1,20 +1,28 @@
-/* =========================
+/* =========================================
+   KISAN TURN - GLOBAL JAVASCRIPT
+   Works safely across all pages
+========================================= */
+
+
+/* =========================================
    MOBILE MENU
-========================= */
+========================================= */
 
 const menuBtn = document.getElementById("menuBtn");
-
 const navLinks = document.getElementById("navLinks");
 
+if (menuBtn && navLinks) {
 
-menuBtn.addEventListener("click", () => {
+    menuBtn.addEventListener("click", () => {
 
-    navLinks.classList.toggle("show");
+        navLinks.classList.toggle("show");
 
-});
+    });
+
+}
 
 
-/* Close menu after clicking a link */
+/* Close mobile menu after clicking a link */
 
 const navItems =
     document.querySelectorAll(".nav-links a");
@@ -24,7 +32,11 @@ navItems.forEach((item) => {
 
     item.addEventListener("click", () => {
 
-        navLinks.classList.remove("show");
+        if (navLinks) {
+
+            navLinks.classList.remove("show");
+
+        }
 
     });
 
@@ -32,165 +44,6 @@ navItems.forEach((item) => {
 
 
 
-/* =========================
-   AUTH MODAL
-========================= */
-
-const loginBtn =
-    document.getElementById("loginBtn");
-
-const registerBtn =
-    document.getElementById("registerBtn");
-
-const trackBtn =
-    document.getElementById("trackBtn");
-
-const authModal =
-    document.getElementById("authModal");
-
-const closeModal =
-    document.getElementById("closeModal");
-
-
-function openModal() {
-
-    authModal.classList.add("show");
-
-    document.body.style.overflow = "hidden";
-
-}
-
-
-function closeAuthModal() {
-
-    authModal.classList.remove("show");
-
-    document.body.style.overflow = "";
-
-}
-
-
-/* Open modal */
-
-loginBtn.addEventListener("click", openModal);
-
-registerBtn.addEventListener("click", openModal);
-
-trackBtn.addEventListener("click", openModal);
-
-
-/* Close button */
-
-closeModal.addEventListener(
-    "click",
-    closeAuthModal
-);
-
-
-/* Click outside modal */
-
-authModal.addEventListener(
-    "click",
-    (event) => {
-
-        if (event.target === authModal) {
-
-            closeAuthModal();
-
-        }
-
-    }
-);
-
-
-/* Escape key */
-
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (event.key === "Escape") {
-
-            closeAuthModal();
-
-        }
-
-    }
-);
-
-
-
-/* =========================
-   FARMER MODULE BUTTONS
-========================= */
-
-const moduleCards =
-    document.querySelectorAll(".module-card");
-
-
-moduleCards.forEach((card) => {
-
-    card.addEventListener("click", () => {
-
-        alert(
-            "This farmer module will be available after authentication."
-        );
-
-    });
-
-});
-
-
-
-/* =========================
-   ACTIVE NAVIGATION
-========================= */
-
-const sections =
-    document.querySelectorAll("section[id]");
-
-
-window.addEventListener("scroll", () => {
-
-    let current = "";
-
-    sections.forEach((section) => {
-
-        const top =
-            section.offsetTop - 120;
-
-        const height =
-            section.offsetHeight;
-
-        if (
-            window.scrollY >= top &&
-            window.scrollY < top + height
-        ) {
-
-            current =
-                section.getAttribute("id");
-
-        }
-
-    });
-
-
-    navItems.forEach((link) => {
-
-        link.classList.remove("active");
-
-        if (
-            link.getAttribute("href") ===
-            "#" + current
-        ) {
-
-            link.classList.add("active");
-
-        }
-
-    });
-
-});
 /* =========================================
    PASSWORD SHOW / HIDE
 ========================================= */
@@ -206,8 +59,12 @@ passwordToggles.forEach((button) => {
         const targetId =
             button.dataset.target;
 
+
         const passwordInput =
             document.getElementById(targetId);
+
+
+        if (!passwordInput) return;
 
 
         if (passwordInput.type === "password") {
@@ -247,20 +104,30 @@ if (loginForm) {
             event.preventDefault();
 
 
+            const mobileInput =
+                document.getElementById("loginMobile");
+
+
+            const passwordInput =
+                document.getElementById("loginPassword");
+
+
+            if (!mobileInput || !passwordInput) {
+
+                return;
+
+            }
+
+
             const mobile =
-                document
-                    .getElementById("loginMobile")
-                    .value
-                    .trim();
+                mobileInput.value.trim();
 
 
             const password =
-                document
-                    .getElementById("loginPassword")
-                    .value;
+                passwordInput.value;
 
 
-            /* Basic validation */
+            /* Validate mobile */
 
             if (!/^[0-9]{10}$/.test(mobile)) {
 
@@ -272,6 +139,8 @@ if (loginForm) {
 
             }
 
+
+            /* Validate password */
 
             if (password.length < 6) {
 
@@ -285,14 +154,14 @@ if (loginForm) {
 
 
             /*
-            Temporary frontend login.
+             TEMPORARY FRONTEND LOGIN
 
-            Later replace this with
-            backend API authentication.
+             Later replace with backend API authentication.
             */
 
+
             alert(
-                "Login successful! Redirecting to dashboard."
+                "Login successful! Redirecting to your dashboard."
             );
 
 
@@ -323,26 +192,42 @@ if (registerForm) {
             event.preventDefault();
 
 
+            const mobileInput =
+                document.getElementById("farmerMobile");
+
+
+            const passwordInput =
+                document.getElementById("registerPassword");
+
+
+            const confirmPasswordInput =
+                document.getElementById("confirmPassword");
+
+
+            if (
+                !mobileInput ||
+                !passwordInput ||
+                !confirmPasswordInput
+            ) {
+
+                return;
+
+            }
+
+
             const mobile =
-                document
-                    .getElementById("farmerMobile")
-                    .value
-                    .trim();
+                mobileInput.value.trim();
 
 
             const password =
-                document
-                    .getElementById("registerPassword")
-                    .value;
+                passwordInput.value;
 
 
             const confirmPassword =
-                document
-                    .getElementById("confirmPassword")
-                    .value;
+                confirmPasswordInput.value;
 
 
-            /* Mobile validation */
+            /* Validate mobile */
 
             if (!/^[0-9]{10}$/.test(mobile)) {
 
@@ -355,7 +240,7 @@ if (registerForm) {
             }
 
 
-            /* Password validation */
+            /* Validate password */
 
             if (password.length < 6) {
 
@@ -368,7 +253,7 @@ if (registerForm) {
             }
 
 
-            /* Password match */
+            /* Check password match */
 
             if (password !== confirmPassword) {
 
@@ -382,15 +267,15 @@ if (registerForm) {
 
 
             /*
-            Temporary frontend registration.
+             TEMPORARY FRONTEND REGISTRATION
 
-            Later:
-            Send this data to backend API.
+             Later:
+             Send farmer data to backend API.
             */
 
 
             alert(
-                "Registration successful! You can now login."
+                "Registration successful! Please login."
             );
 
 
@@ -401,18 +286,29 @@ if (registerForm) {
     );
 
 }
+
+
+
 /* =========================================
-   FORGOT PASSWORD
+   FORGOT PASSWORD - STEP 1
 ========================================= */
 
 const forgotPasswordForm =
-    document.getElementById("forgotPasswordForm");
+    document.getElementById(
+        "forgotPasswordForm"
+    );
+
 
 const forgotStepOne =
-    document.getElementById("forgotStepOne");
+    document.getElementById(
+        "forgotStepOne"
+    );
+
 
 const forgotStepTwo =
-    document.getElementById("forgotStepTwo");
+    document.getElementById(
+        "forgotStepTwo"
+    );
 
 
 if (forgotPasswordForm) {
@@ -424,14 +320,24 @@ if (forgotPasswordForm) {
             event.preventDefault();
 
 
+            const mobileInput =
+                document.getElementById(
+                    "forgotMobile"
+                );
+
+
+            if (!mobileInput) {
+
+                return;
+
+            }
+
+
             const mobile =
-                document
-                    .getElementById("forgotMobile")
-                    .value
-                    .trim();
+                mobileInput.value.trim();
 
 
-            /* Mobile validation */
+            /* Validate mobile */
 
             if (!/^[0-9]{10}$/.test(mobile)) {
 
@@ -445,16 +351,27 @@ if (forgotPasswordForm) {
 
 
             /*
-            Temporary verification.
+             TEMPORARY ACCOUNT VERIFICATION
 
-            Later this will connect to:
-            Backend API → OTP verification
+             Later replace this with:
+             Backend API + OTP verification.
             */
 
 
-            forgotStepOne.style.display = "none";
+            if (
+                forgotStepOne &&
+                forgotStepTwo
+            ) {
 
-            forgotStepTwo.classList.add("show");
+                forgotStepOne.style.display =
+                    "none";
+
+
+                forgotStepTwo.classList.add(
+                    "show"
+                );
+
+            }
 
         }
     );
@@ -464,11 +381,13 @@ if (forgotPasswordForm) {
 
 
 /* =========================================
-   RESET PASSWORD
+   RESET PASSWORD - STEP 2
 ========================================= */
 
 const resetPasswordForm =
-    document.getElementById("resetPasswordForm");
+    document.getElementById(
+        "resetPasswordForm"
+    );
 
 
 if (resetPasswordForm) {
@@ -480,19 +399,37 @@ if (resetPasswordForm) {
             event.preventDefault();
 
 
+            const newPasswordInput =
+                document.getElementById(
+                    "newPassword"
+                );
+
+
+            const confirmPasswordInput =
+                document.getElementById(
+                    "newConfirmPassword"
+                );
+
+
+            if (
+                !newPasswordInput ||
+                !confirmPasswordInput
+            ) {
+
+                return;
+
+            }
+
+
             const newPassword =
-                document
-                    .getElementById("newPassword")
-                    .value;
+                newPasswordInput.value;
 
 
             const confirmPassword =
-                document
-                    .getElementById("newConfirmPassword")
-                    .value;
+                confirmPasswordInput.value;
 
 
-            /* Password length */
+            /* Validate password */
 
             if (newPassword.length < 6) {
 
@@ -505,9 +442,12 @@ if (resetPasswordForm) {
             }
 
 
-            /* Password matching */
+            /* Check password match */
 
-            if (newPassword !== confirmPassword) {
+            if (
+                newPassword !==
+                confirmPassword
+            ) {
 
                 alert(
                     "Passwords do not match."
@@ -519,10 +459,10 @@ if (resetPasswordForm) {
 
 
             /*
-            Temporary frontend reset.
+             TEMPORARY PASSWORD RESET
 
-            Later:
-            Send new password to backend API.
+             Later send the new password
+             securely to your backend.
             */
 
 
@@ -538,3 +478,126 @@ if (resetPasswordForm) {
     );
 
 }
+
+
+
+/* =========================================
+   ACTIVE NAVIGATION
+   Only for index.html sections
+========================================= */
+
+const sections =
+    document.querySelectorAll(
+        "section[id]"
+    );
+
+
+if (
+    sections.length > 0 &&
+    navItems.length > 0
+) {
+
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            let currentSection = "";
+
+
+            sections.forEach(
+                (section) => {
+
+                    const sectionTop =
+                        section.offsetTop - 150;
+
+
+                    const sectionHeight =
+                        section.offsetHeight;
+
+
+                    if (
+                        window.scrollY >=
+                            sectionTop &&
+
+                        window.scrollY <
+                            sectionTop +
+                            sectionHeight
+                    ) {
+
+                        currentSection =
+                            section.getAttribute(
+                                "id"
+                            );
+
+                    }
+
+                }
+            );
+
+
+            navItems.forEach(
+                (link) => {
+
+                    link.classList.remove(
+                        "active"
+                    );
+
+
+                    if (
+                        link.getAttribute(
+                            "href"
+                        ) ===
+                        "#" +
+                        currentSection
+                    ) {
+
+                        link.classList.add(
+                            "active"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================
+   SAFE BUTTON HANDLING
+   Future module buttons
+========================================= */
+
+const moduleCards =
+    document.querySelectorAll(
+        ".module-card"
+    );
+
+
+moduleCards.forEach(
+    (card) => {
+
+        card.addEventListener(
+            "click",
+            () => {
+
+                const link =
+                    card.dataset.link;
+
+
+                if (link) {
+
+                    window.location.href =
+                        link;
+
+                }
+
+            }
+        );
+
+    }
+);

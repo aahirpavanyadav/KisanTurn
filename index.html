@@ -11,825 +11,1088 @@
 
     <meta
         name="description"
-        content="Kisan Turn - Farmer Procurement Queue and Status Management"
+        content="Kisan Turn - Smart procurement queue and status management for farmers."
     >
 
-    <title>Kisan Turn | Farmer Procurement</title>
+    <title>Kisan Turn | Your Turn. Your Time.</title>
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link
+        rel="stylesheet"
+        href="css/styles.css"
+    >
 </head>
 
 
 <body>
 
 
-<!-- =========================
-     HEADER
-========================= -->
+    <!-- BACKGROUND DECORATION -->
 
-<header class="header">
-
-    <nav class="navbar container">
-
-        <a href="#home" class="brand">
-            <span>🌾</span>
-            Kisan Turn
-        </a>
+    <div class="page-glow glow-one"></div>
+    <div class="page-glow glow-two"></div>
 
 
-        <!-- NAVIGATION -->
+    <!-- =========================
+         HEADER
+    ========================== -->
 
-        <div class="nav-links" id="navLinks">
+    <header class="header">
 
-            <a href="#home" class="active">Home</a>
+        <div class="container navbar">
 
-            <a href="#how-it-works">How It Works</a>
+            <a href="index.html" class="brand">
 
-            <a href="#features">Features</a>
+                <span class="brand-mark">🌾</span>
 
-            <a href="#status">Track Status</a>
+                <span>Kisan Turn</span>
 
-        </div>
-
-
-        <!-- ACTIONS -->
-
-        <div class="nav-actions">
-
-            <button
-                class="login-btn"
-                id="loginBtn"
-            >
-                Login
-            </button>
+            </a>
 
 
-            <button
-                class="menu-btn"
-                id="menuBtn"
-                aria-label="Open Menu"
-            >
-                ☰
-            </button>
+            <nav class="nav-links" id="navLinks">
 
-        </div>
+                <a href="#home" class="active">
+                    Home
+                </a>
 
-    </nav>
-
-</header>
-
-
-
-<main>
-
-
-<!-- =========================
-     HOME / HERO
-========================= -->
-
-<section class="hero" id="home">
-
-    <div class="container hero-container">
-
-
-        <!-- LEFT CONTENT -->
-
-        <div class="hero-content">
-
-            <div class="hero-badge">
-
-                <span class="dot"></span>
-
-                Farmer Procurement Made Simple
-
-            </div>
-
-
-            <h1>
-                Know Your
-                <span>Turn.</span>
-
-                Save Your Time.
-            </h1>
-
-
-            <p>
-
-                Kisan Turn helps farmers manage procurement
-                registration, receive a digital token, track
-                their live queue position, and monitor the
-                complete procurement status.
-
-            </p>
-
-
-            <div class="hero-buttons">
-
-                <button
-                    class="primary-btn"
-                    id="registerBtn"
-                >
-                    Register Now
-                    <span>→</span>
-                </button>
-
-
-                <a
-                    href="#how-it-works"
-                    class="secondary-btn"
-                >
+                <a href="#how-it-works">
                     How It Works
                 </a>
 
-            </div>
+                <a href="#features">
+                    Features
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+            </nav>
 
 
-            <!-- BENEFITS -->
+            <div class="nav-actions">
 
-            <div class="benefit-row">
+                <a
+                    href="login.html"
+                    class="login-btn"
+                >
+                    Login
+                </a>
 
-                <div>
-                    <strong>01</strong>
-                    <span>Digital Token</span>
-                </div>
 
-                <div>
-                    <strong>02</strong>
-                    <span>Live Queue</span>
-                </div>
+                <a
+                    href="register.html"
+                    class="primary-btn nav-register"
+                >
+                    Register
 
-                <div>
-                    <strong>03</strong>
-                    <span>Track Status</span>
-                </div>
+                    <span>→</span>
+                </a>
+
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Toggle navigation"
+                >
+                    ☰
+                </button>
 
             </div>
 
         </div>
 
+    </header>
 
 
-        <!-- RIGHT PREVIEW -->
 
-        <div class="hero-visual">
+    <!-- =========================
+         HERO
+    ========================== -->
 
-            <div class="farmer-card">
+    <main>
 
-                <div class="card-header">
 
-                    <div>
+        <section class="hero" id="home">
 
-                        <span class="small-text">
-                            MY PROCUREMENT
+            <div class="container hero-container">
+
+
+                <!-- LEFT -->
+
+                <div class="hero-content">
+
+
+                    <div class="hero-badge">
+
+                        <span class="badge-dot"></span>
+
+                        Smart Farmer Procurement System
+
+                    </div>
+
+
+                    <h1>
+
+                        No More Waiting.
+
+                        <span>
+                            Know Your Turn.
                         </span>
 
-                        <h3>Today's Queue</h3>
+                    </h1>
+
+
+                    <p class="hero-description">
+
+                        Kisan Turn helps farmers digitally manage
+                        procurement queues, track their live position,
+                        and know exactly when it is their turn.
+
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="register.html"
+                            class="primary-btn hero-primary"
+                        >
+
+                            Get Started
+
+                            <span>→</span>
+
+                        </a>
+
+
+                        <a
+                            href="#how-it-works"
+                            class="secondary-btn"
+                        >
+
+                            See How It Works
+
+                            <span>↓</span>
+
+                        </a>
 
                     </div>
 
 
-                    <div class="live-status">
 
-                        <span></span>
+                    <!-- TRUST / QUICK POINTS -->
 
-                        LIVE
+                    <div class="hero-trust">
+
+                        <div>
+
+                            <span class="trust-icon">✓</span>
+
+                            <p>
+                                Digital Token
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="trust-icon">✓</span>
+
+                            <p>
+                                Live Queue
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="trust-icon">✓</span>
+
+                            <p>
+                                Real-Time Status
+                            </p>
+
+                        </div>
 
                     </div>
+
 
                 </div>
 
 
-                <!-- TOKEN -->
 
-                <div class="token-box">
+                <!-- RIGHT HERO DASHBOARD -->
 
-                    <span>Your Token Number</span>
+                <div class="hero-visual">
 
-                    <strong>A-042</strong>
+
+                    <div class="visual-orbit orbit-one"></div>
+                    <div class="visual-orbit orbit-two"></div>
+
+
+                    <div class="dashboard-preview">
+
+
+                        <!-- TOP BAR -->
+
+                        <div class="preview-top">
+
+                            <div>
+
+                                <p class="preview-label">
+                                    GOOD MORNING
+                                </p>
+
+                                <h3>
+                                    Welcome, Farmer 👋
+                                </h3>
+
+                            </div>
+
+
+                            <div class="preview-avatar">
+                                👨‍🌾
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- TOKEN -->
+
+                        <div class="token-card">
+
+                            <div class="token-top">
+
+                                <span>
+                                    YOUR PROCUREMENT TOKEN
+                                </span>
+
+                                <span class="live-status">
+
+                                    <i></i>
+
+                                    LIVE
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="token-main">
+
+                                <div>
+
+                                    <p>
+                                        Token Number
+                                    </p>
+
+                                    <h2>
+                                        A-042
+                                    </h2>
+
+                                </div>
+
+
+                                <div class="token-icon">
+                                    🌾
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- QUEUE STATS -->
+
+                        <div class="queue-stats">
+
+                            <div class="queue-stat">
+
+                                <span class="stat-small-label">
+                                    CURRENT
+                                </span>
+
+                                <strong>
+                                    A-039
+                                </strong>
+
+                            </div>
+
+
+                            <div class="queue-stat">
+
+                                <span class="stat-small-label">
+                                    YOUR POSITION
+                                </span>
+
+                                <strong>
+                                    #4
+                                </strong>
+
+                            </div>
+
+
+                            <div class="queue-stat">
+
+                                <span class="stat-small-label">
+                                    EST. WAIT
+                                </span>
+
+                                <strong>
+                                    25 min
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- PROGRESS -->
+
+                        <div class="queue-progress">
+
+                            <div class="progress-heading">
+
+                                <span>
+                                    Queue Progress
+                                </span>
+
+                                <strong>
+                                    75%
+                                </strong>
+
+                            </div>
+
+
+                            <div class="progress-track">
+
+                                <div class="progress-bar"></div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- QUEUE ROW -->
+
+                        <div class="mini-queue">
+
+                            <div class="queue-person done">
+
+                                <span>A-039</span>
+
+                                <small>Processing</small>
+
+                            </div>
+
+
+                            <div class="queue-person">
+
+                                <span>A-040</span>
+
+                            </div>
+
+
+                            <div class="queue-person">
+
+                                <span>A-041</span>
+
+                            </div>
+
+
+                            <div class="queue-person you">
+
+                                <span>A-042</span>
+
+                                <small>You</small>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- FLOATING CARD -->
+
+                    <div class="floating-notification">
+
+                        <div class="notification-icon">
+                            🔔
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Your turn is approaching!
+                            </strong>
+
+                            <p>
+                                Only 3 farmers ahead
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PROBLEM / IMPACT STRIP
+        ========================== -->
+
+        <section class="impact-strip">
+
+            <div class="container impact-grid">
+
+
+                <div class="impact-intro">
+
+                    <span class="section-tag">
+                        A BETTER WAY
+                    </span>
+
+                    <h2>
+                        Procurement should not mean
+                        an entire day of waiting.
+                    </h2>
+
+                </div>
+
+
+                <div class="impact-card">
+
+                    <span class="impact-number">
+                        01
+                    </span>
+
+                    <h3>
+                        Save Time
+                    </h3>
 
                     <p>
-                        Your turn is approaching
+                        Know your approximate turn before reaching the center.
                     </p>
 
                 </div>
 
 
-                <!-- QUEUE -->
+                <div class="impact-card">
 
-                <div class="queue-details">
+                    <span class="impact-number">
+                        02
+                    </span>
 
-                    <div class="queue-detail">
+                    <h3>
+                        Stay Updated
+                    </h3>
 
-                        <span>Current Token</span>
-
-                        <strong>A-039</strong>
-
-                    </div>
-
-
-                    <div class="queue-detail">
-
-                        <span>Farmers Ahead</span>
-
-                        <strong>03</strong>
-
-                    </div>
-
-
-                    <div class="queue-detail">
-
-                        <span>Estimated Time</span>
-
-                        <strong>25 min</strong>
-
-                    </div>
+                    <p>
+                        Follow your queue and procurement status digitally.
+                    </p>
 
                 </div>
 
 
-                <!-- STATUS -->
+                <div class="impact-card">
 
-                <div class="status-progress">
+                    <span class="impact-number">
+                        03
+                    </span>
 
-                    <div class="progress-label">
+                    <h3>
+                        Reduce Uncertainty
+                    </h3>
 
-                        <span>Procurement Progress</span>
-
-                        <strong>In Queue</strong>
-
-                    </div>
-
-
-                    <div class="progress-bar">
-
-                        <div class="progress"></div>
-
-                    </div>
+                    <p>
+                        Clear information at every stage of procurement.
+                    </p>
 
                 </div>
+
 
             </div>
 
+        </section>
 
-            <div class="floating-info notification-card">
 
-                🔔 Your turn is approaching
 
-            </div>
+        <!-- =========================
+             HOW IT WORKS
+        ========================== -->
 
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     HOW IT WORKS
-========================= -->
-
-<section
-    class="section how-section"
-    id="how-it-works"
->
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span class="section-tag">
-                HOW IT WORKS
-            </span>
-
-            <h2>
-                A Simple Process
-                for <span>Every Farmer.</span>
-            </h2>
-
-            <p>
-                From registration to procurement completion,
-                everything can be tracked step by step.
-            </p>
-
-        </div>
-
-
-        <div class="steps-grid">
-
-
-            <div class="step-card">
-
-                <div class="step-number">
-                    01
-                </div>
-
-                <h3>
-                    Register
-                </h3>
-
-                <p>
-                    Create your account and enter
-                    your basic farmer details.
-                </p>
-
-            </div>
-
-
-            <div class="step-card">
-
-                <div class="step-number">
-                    02
-                </div>
-
-                <h3>
-                    Book Procurement
-                </h3>
-
-                <p>
-                    Select the procurement center
-                    and enter crop details.
-                </p>
-
-            </div>
-
-
-            <div class="step-card">
-
-                <div class="step-number">
-                    03
-                </div>
-
-                <h3>
-                    Get Your Token
-                </h3>
-
-                <p>
-                    Receive a digital token and
-                    secure your position in queue.
-                </p>
-
-            </div>
-
-
-            <div class="step-card">
-
-                <div class="step-number">
-                    04
-                </div>
-
-                <h3>
-                    Track Your Turn
-                </h3>
-
-                <p>
-                    Monitor queue position and
-                    procurement status in real time.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     FEATURES
-========================= -->
-
-<section
-    class="section features-section"
-    id="features"
->
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span class="section-tag">
-                FOR FARMERS
-            </span>
-
-            <h2>
-                Everything You Need
-                in <span>One Place.</span>
-            </h2>
-
-        </div>
-
-
-        <div class="features-grid">
-
-
-            <article class="feature-card">
-
-                <div class="feature-icon">
-                    🎫
-                </div>
-
-                <h3>
-                    Digital Token
-                </h3>
-
-                <p>
-                    Get a unique digital token
-                    for your procurement visit.
-                </p>
-
-            </article>
-
-
-            <article class="feature-card">
-
-                <div class="feature-icon">
-                    📍
-                </div>
-
-                <h3>
-                    Live Queue
-                </h3>
-
-                <p>
-                    Know your current position
-                    and farmers ahead of you.
-                </p>
-
-            </article>
-
-
-            <article class="feature-card">
-
-                <div class="feature-icon">
-                    🔔
-                </div>
-
-                <h3>
-                    Notifications
-                </h3>
-
-                <p>
-                    Get updates when your turn
-                    is approaching.
-                </p>
-
-            </article>
-
-
-            <article class="feature-card">
-
-                <div class="feature-icon">
-                    📋
-                </div>
-
-                <h3>
-                    Procurement Status
-                </h3>
-
-                <p>
-                    Track verification, quality
-                    check, approval and payment.
-                </p>
-
-            </article>
-
-
-            <article class="feature-card">
-
-                <div class="feature-icon">
-                    🕒
-                </div>
-
-                <h3>
-                    History
-                </h3>
-
-                <p>
-                    View your previous tokens
-                    and procurement records.
-                </p>
-
-            </article>
-
-
-            <article class="feature-card">
-
-                <div class="feature-icon">
-                    👤
-                </div>
-
-                <h3>
-                    Farmer Profile
-                </h3>
-
-                <p>
-                    Manage your personal and
-                    procurement information.
-                </p>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     PROCUREMENT STATUS
-========================= -->
-
-<section
-    class="section status-section"
-    id="status"
->
-
-    <div class="container">
-
-        <div class="status-box">
-
-
-            <div class="status-content">
-
-                <span class="section-tag">
-                    PROCUREMENT STATUS
-                </span>
-
-                <h2>
-                    Track Every Step
-                    of Your <span>Procurement.</span>
-                </h2>
-
-                <p>
-                    Farmers can clearly see where
-                    their procurement process currently stands.
-                </p>
-
-
-                <button
-                    class="primary-btn"
-                    id="trackBtn"
-                >
-                    Track My Status
-                    <span>→</span>
-                </button>
-
-            </div>
-
-
-
-            <div class="status-timeline">
-
-
-                <div class="timeline-item completed">
-
-                    <div class="timeline-dot">
-                        ✓
-                    </div>
-
-                    <div>
-
-                        <h4>
-                            Registration
-                        </h4>
-
-                        <p>
-                            Farmer details verified
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="timeline-item active">
-
-                    <div class="timeline-dot">
-                        2
-                    </div>
-
-                    <div>
-
-                        <h4>
-                            In Queue
-                        </h4>
-
-                        <p>
-                            Waiting for your turn
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="timeline-item">
-
-                    <div class="timeline-dot">
-                        3
-                    </div>
-
-                    <div>
-
-                        <h4>
-                            Quality Check
-                        </h4>
-
-                        <p>
-                            Produce inspection
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="timeline-item">
-
-                    <div class="timeline-dot">
-                        4
-                    </div>
-
-                    <div>
-
-                        <h4>
-                            Procurement Complete
-                        </h4>
-
-                        <p>
-                            Payment status updated
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     FARMER MODULES
-========================= -->
-
-<section class="section modules-section">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span class="section-tag">
-                FARMER DASHBOARD
-            </span>
-
-            <h2>
-                Your Procurement,
-                <span>Under Your Control.</span>
-            </h2>
-
-        </div>
-
-
-        <div class="modules-grid">
-
-            <button class="module-card">
-                <span>📊</span>
-                Dashboard
-            </button>
-
-            <button class="module-card">
-                <span>🏢</span>
-                Book Procurement
-            </button>
-
-            <button class="module-card">
-                <span>🎫</span>
-                My Queue
-            </button>
-
-            <button class="module-card">
-                <span>📋</span>
-                My Status
-            </button>
-
-            <button class="module-card">
-                <span>🕒</span>
-                History
-            </button>
-
-            <button class="module-card">
-                <span>👤</span>
-                Profile
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer class="footer">
-
-    <div class="container footer-container">
-
-        <div>
-
-            <h3>
-                🌾 Kisan Turn
-            </h3>
-
-            <p>
-                Farmer Procurement Queue
-                & Status Management
-            </p>
-
-        </div>
-
-
-        <p>
-            © 2026 Kisan Turn
-        </p>
-
-    </div>
-
-</footer>
-
-
-
-<!-- =========================
-     AUTH MODAL
-========================= -->
-
-<div
-    class="modal"
-    id="authModal"
->
-
-    <div class="modal-content">
-
-        <button
-            class="close-btn"
-            id="closeModal"
+        <section
+            class="how-it-works section"
+            id="how-it-works"
         >
-            ×
-        </button>
+
+            <div class="container">
 
 
-        <div class="modal-icon">
-            🌾
+                <div class="section-heading centered">
+
+                    <span class="section-tag">
+                        SIMPLE PROCESS
+                    </span>
+
+                    <h2>
+                        Four Steps.
+                        <span>
+                            Zero Confusion.
+                        </span>
+                    </h2>
+
+                    <p>
+                        From registration to procurement completion,
+                        everything stays connected in one journey.
+                    </p>
+
+                </div>
+
+
+
+                <div class="steps-grid">
+
+
+                    <article class="step-card">
+
+                        <div class="step-number">
+                            01
+                        </div>
+
+                        <div class="step-icon">
+                            👨‍🌾
+                        </div>
+
+                        <h3>
+                            Register
+                        </h3>
+
+                        <p>
+                            Create your Kisan Turn account with your basic details.
+                        </p>
+
+                    </article>
+
+
+
+                    <article class="step-card">
+
+                        <div class="step-number">
+                            02
+                        </div>
+
+                        <div class="step-icon">
+                            📋
+                        </div>
+
+                        <h3>
+                            Book Procurement
+                        </h3>
+
+                        <p>
+                            Select your procurement center, crop and quantity.
+                        </p>
+
+                    </article>
+
+
+
+                    <article class="step-card">
+
+                        <div class="step-number">
+                            03
+                        </div>
+
+                        <div class="step-icon">
+                            🎫
+                        </div>
+
+                        <h3>
+                            Get Your Token
+                        </h3>
+
+                        <p>
+                            Receive a unique digital token for your procurement.
+                        </p>
+
+                    </article>
+
+
+
+                    <article class="step-card">
+
+                        <div class="step-number">
+                            04
+                        </div>
+
+                        <div class="step-icon">
+                            📍
+                        </div>
+
+                        <h3>
+                            Track Your Turn
+                        </h3>
+
+                        <p>
+                            Check your live queue position and procurement status.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             FEATURES
+        ========================== -->
+
+        <section
+            class="features section"
+            id="features"
+        >
+
+            <div class="container features-layout">
+
+
+                <div class="features-content">
+
+                    <span class="section-tag">
+                        BUILT FOR FARMERS
+                    </span>
+
+                    <h2>
+                        Everything important.
+                        <span>
+                            Nothing complicated.
+                        </span>
+                    </h2>
+
+                    <p>
+
+                        A simple interface designed around the actual
+                        procurement journey—from getting a token to
+                        knowing when your work is complete.
+
+                    </p>
+
+
+                    <a
+                        href="register.html"
+                        class="text-link"
+                    >
+
+                        Create your account
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+
+
+                <div class="features-grid">
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-icon">
+                            🎫
+                        </div>
+
+                        <h3>
+                            Digital Token
+                        </h3>
+
+                        <p>
+                            Get a unique token without standing in a physical queue.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card featured">
+
+                        <div class="feature-icon">
+                            📡
+                        </div>
+
+                        <h3>
+                            Live Queue Tracking
+                        </h3>
+
+                        <p>
+                            See the current token and your exact position.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-icon">
+                            🔄
+                        </div>
+
+                        <h3>
+                            Status Updates
+                        </h3>
+
+                        <p>
+                            Follow every stage of your procurement journey.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-icon">
+                            ⏱️
+                        </div>
+
+                        <h3>
+                            Time Estimate
+                        </h3>
+
+                        <p>
+                            Get an estimated waiting time before your turn.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section
+            class="about section"
+            id="about"
+        >
+
+            <div class="container about-container">
+
+
+                <div class="about-visual">
+
+                    <div class="about-main-card">
+
+                        <span class="about-small">
+                            KISAN TURN
+                        </span>
+
+                        <h3>
+                            Your time matters.
+                        </h3>
+
+                        <p>
+                            Technology that makes procurement simpler and more transparent.
+                        </p>
+
+                        <div class="about-lines">
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="about-floating">
+
+                        <span>✓</span>
+
+                        <div>
+
+                            <strong>
+                                Queue Updated
+                            </strong>
+
+                            <small>
+                                Position: #4
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="about-content">
+
+                    <span class="section-tag">
+                        ABOUT THE PLATFORM
+                    </span>
+
+                    <h2>
+                        Less waiting.
+                        <span>
+                            Better procurement.
+                        </span>
+                    </h2>
+
+                    <p>
+
+                        Kisan Turn is a farmer-focused procurement queue
+                        and status management platform designed to bring
+                        visibility, structure and convenience to the process.
+
+                    </p>
+
+
+                    <div class="about-points">
+
+                        <div>
+
+                            <span>✓</span>
+
+                            <p>
+                                Clear procurement journey
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>✓</span>
+
+                            <p>
+                                Easy-to-understand queue information
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>✓</span>
+
+                            <p>
+                                Accessible across devices
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="register.html"
+                        class="primary-btn"
+                    >
+
+                        Join Kisan Turn
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CTA
+        ========================== -->
+
+        <section class="cta-section">
+
+            <div class="container cta-box">
+
+
+                <div>
+
+                    <span class="section-tag light-tag">
+                        READY TO BEGIN?
+                    </span>
+
+                    <h2>
+                        Your turn shouldn't be
+                        difficult to know.
+                    </h2>
+
+                    <p>
+                        Start your digital procurement journey with Kisan Turn.
+                    </p>
+
+                </div>
+
+
+                <div class="cta-actions">
+
+                    <a
+                        href="register.html"
+                        class="cta-primary"
+                    >
+
+                        Get Started
+
+                        <span>→</span>
+
+                    </a>
+
+
+                    <a
+                        href="login.html"
+                        class="cta-secondary"
+                    >
+
+                        Login
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="brand">
+
+                    <span class="brand-mark">
+                        🌾
+                    </span>
+
+                    <span>
+                        Kisan Turn
+                    </span>
+
+                </a>
+
+
+                <p>
+                    Smart procurement queue and status management for farmers.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <div>
+
+                    <h4>
+                        Platform
+                    </h4>
+
+                    <a href="#how-it-works">
+                        How It Works
+                    </a>
+
+                    <a href="#features">
+                        Features
+                    </a>
+
+                    <a href="#about">
+                        About
+                    </a>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Account
+                    </h4>
+
+                    <a href="login.html">
+                        Login
+                    </a>
+
+                    <a href="register.html">
+                        Register
+                    </a>
+
+                    <a href="forgot-password.html">
+                        Forgot Password
+                    </a>
+
+                </div>
+
+            </div>
+
+
         </div>
 
 
-        <h2>
-            Welcome to Kisan Turn
-        </h2>
+        <div class="container footer-bottom">
 
+            <p>
+                © 2026 Kisan Turn · Built for Smart India Hackathon
+            </p>
 
-        <p>
-            Login and registration functionality
-            will be connected with the backend.
-        </p>
-
-
-        <div class="auth-buttons">
-
-            <button class="primary-btn">
-                Login
-            </button>
-
-            <button class="secondary-btn">
-                Register
-            </button>
+            <p>
+                Farmer Procurement Queue & Status Management
+            </p>
 
         </div>
 
-    </div>
-
-</div>
+    </footer>
 
 
 
-<script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 
