@@ -7757,3 +7757,1487 @@ body.dark-mode
     }
 
 }
+/* =========================================================
+   KISAN TURN - PROCUREMENT PAGE
+   Isolated CSS: kt-
+========================================================= */
+
+.kt-procurement-page {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    padding: 36px 40px 70px;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.kt-procurement-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+    margin-bottom: 28px;
+}
+
+.kt-eyebrow {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--primary);
+}
+
+.kt-procurement-heading h2 {
+    margin: 7px 0 9px;
+    font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+    letter-spacing: -0.04em;
+}
+
+.kt-procurement-heading p {
+    max-width: 600px;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.kt-progress {
+    display: flex;
+    align-items: center;
+    min-width: 290px;
+}
+
+.kt-progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+}
+
+.kt-progress-number {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    font-weight: 800;
+    transition: 0.3s ease;
+}
+
+.kt-progress-step span {
+    color: var(--text-muted);
+    font-size: 0.58rem;
+    font-weight: 700;
+}
+
+.kt-progress-step.active .kt-progress-number,
+.kt-progress-step.completed .kt-progress-number {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.kt-progress-step.active span,
+.kt-progress-step.completed span {
+    color: var(--primary);
+}
+
+.kt-progress-line {
+    flex: 1;
+    min-width: 30px;
+    height: 2px;
+    margin: 0 7px 23px;
+    background: var(--border);
+    border-radius: 10px;
+}
+
+.kt-progress-step.completed + .kt-progress-line {
+    background: var(--primary);
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.kt-procurement-card {
+    padding: clamp(20px, 4vw, 38px);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: var(--shadow-sm);
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.kt-form-section {
+    position: relative;
+}
+
+.kt-section-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.kt-section-icon {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: var(--primary-light);
+    font-size: 1.05rem;
+}
+
+.kt-bank-icon {
+    background: #edf4ff;
+}
+
+.kt-location-icon {
+    background: #fff4e8;
+}
+
+.kt-section-title h3 {
+    margin: 0 0 4px;
+    font-size: 0.98rem;
+}
+
+.kt-section-title p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.68rem;
+}
+
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.kt-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.kt-bank-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.kt-location-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+.kt-field {
+    min-width: 0;
+}
+
+.kt-field label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text);
+    font-size: 0.68rem;
+    font-weight: 750;
+}
+
+.kt-field input,
+.kt-field select {
+    width: 100%;
+    height: 50px;
+    padding: 0 15px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    outline: none;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.76rem;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.kt-field input::placeholder {
+    color: var(--text-muted);
+}
+
+.kt-field input:focus,
+.kt-field select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(47, 125, 74, 0.1);
+}
+
+.kt-field input:disabled,
+.kt-field select:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.kt-field-error {
+    display: block;
+    min-height: 16px;
+    margin-top: 6px;
+    color: #d84b4b;
+    font-size: 0.59rem;
+}
+
+.kt-field.is-error input,
+.kt-field.is-error select {
+    border-color: #d84b4b;
+}
+
+.kt-field.is-success input {
+    border-color: var(--primary);
+}
+
+
+/* =========================================================
+   AADHAAR CARD
+========================================================= */
+
+.kt-aadhaar-card {
+    margin-top: 22px;
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(47, 125, 74, 0.035),
+            transparent 55%
+        );
+}
+
+.kt-aadhaar-row {
+    display: flex;
+    gap: 12px;
+}
+
+.kt-aadhaar-row input {
+    flex: 1;
+}
+
+.kt-verify-aadhaar-btn {
+    position: relative;
+    min-width: 155px;
+    height: 50px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 12px;
+    background: var(--primary);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 750;
+    cursor: pointer;
+    overflow: hidden;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.kt-verify-aadhaar-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(47, 125, 74, 0.22);
+}
+
+.kt-verify-aadhaar-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.75;
+    transform: none;
+}
+
+.kt-btn-loader {
+    display: none;
+    width: 16px;
+    height: 16px;
+    margin: auto;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: ktSpin 0.7s linear infinite;
+}
+
+.kt-verify-aadhaar-btn.loading .kt-btn-text {
+    display: none;
+}
+
+.kt-verify-aadhaar-btn.loading .kt-btn-loader {
+    display: block;
+}
+
+@keyframes ktSpin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   VERIFICATION STATUS
+========================================================= */
+
+.kt-verification-status {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 11px 13px;
+    border-radius: 10px;
+    font-size: 0.66rem;
+    font-weight: 700;
+}
+
+.kt-verification-status.show {
+    display: flex;
+}
+
+.kt-verification-status.success {
+    color: var(--primary);
+    background: var(--primary-light);
+}
+
+.kt-verification-status.error {
+    color: #c13f3f;
+    background: #fff1f1;
+}
+
+
+/* =========================================================
+   OTP PANEL
+========================================================= */
+
+.kt-otp-panel {
+    display: none;
+    margin-top: 18px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--surface);
+    animation: ktReveal 0.35s ease both;
+}
+
+.kt-otp-panel.show {
+    display: block;
+}
+
+@keyframes ktReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.kt-otp-badge {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--primary);
+    font-size: 0.56rem;
+    font-weight: 850;
+    letter-spacing: 0.12em;
+}
+
+.kt-otp-top h4 {
+    margin: 0 0 6px;
+    font-size: 0.95rem;
+}
+
+.kt-otp-top p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.66rem;
+}
+
+
+/* OTP BOXES */
+
+.kt-otp-inputs {
+    display: flex;
+    gap: 10px;
+    margin: 22px 0;
+}
+
+.kt-otp-input {
+    width: 50px;
+    height: 54px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    outline: none;
+    text-align: center;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 1.1rem;
+    font-weight: 800;
+    transition: 0.2s ease;
+}
+
+.kt-otp-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(47, 125, 74, 0.1);
+}
+
+.kt-otp-input.error {
+    border-color: #d84b4b;
+    animation: ktShake 0.3s ease;
+}
+
+@keyframes ktShake {
+
+    25% {
+        transform: translateX(-4px);
+    }
+
+    50% {
+        transform: translateX(4px);
+    }
+
+    75% {
+        transform: translateX(-2px);
+    }
+
+}
+
+
+/* OTP BOTTOM */
+
+.kt-otp-bottom {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.kt-verify-otp-btn,
+.kt-resend-otp-btn {
+    height: 43px;
+    padding: 0 18px;
+    border-radius: 10px;
+    font-size: 0.66rem;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.kt-verify-otp-btn {
+    border: none;
+    background: var(--primary);
+    color: white;
+}
+
+.kt-resend-otp-btn {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-light);
+}
+
+.kt-otp-timer {
+    margin-left: auto;
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    font-weight: 700;
+}
+
+.kt-demo-otp {
+    margin-top: 15px;
+    min-height: 16px;
+    color: var(--text-muted);
+    font-size: 0.58rem;
+}
+
+
+/* =========================================================
+   LOCK MESSAGE
+========================================================= */
+
+.kt-lock-message {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 28px;
+    padding: 17px;
+    border: 1px solid #eadfca;
+    border-radius: 15px;
+    background: #fffaf2;
+}
+
+.kt-lock-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: white;
+}
+
+.kt-lock-message strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.72rem;
+}
+
+.kt-lock-message p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.64rem;
+}
+
+
+/* =========================================================
+   LOCKED DETAILS
+========================================================= */
+
+.kt-details-wrapper {
+    opacity: 0.42;
+    pointer-events: none;
+    filter: grayscale(0.35);
+    transform: translateY(4px);
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s ease,
+        filter 0.45s ease;
+}
+
+.kt-details-wrapper.unlocked {
+    opacity: 1;
+    pointer-events: auto;
+    filter: grayscale(0);
+    transform: translateY(0);
+}
+
+.kt-section-divider {
+    height: 1px;
+    margin: 32px 0;
+    background: var(--border);
+}
+
+
+/* PASSWORD */
+
+.kt-password-wrap {
+    position: relative;
+}
+
+.kt-password-wrap input {
+    padding-right: 65px;
+}
+
+.kt-toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: var(--primary);
+    font-size: 0.62rem;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   SECURITY NOTE
+========================================================= */
+
+.kt-security-note {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+    padding: 14px 16px;
+    border: 1px solid #dce9df;
+    border-radius: 13px;
+    background: var(--primary-light);
+}
+
+.kt-security-note span {
+    color: var(--primary);
+}
+
+.kt-security-note p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.65rem;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.kt-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.kt-clear-btn,
+.kt-submit-btn {
+    min-height: 48px;
+    padding: 0 20px;
+    border-radius: 12px;
+    font-size: 0.68rem;
+    font-weight: 750;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.kt-clear-btn {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-light);
+}
+
+.kt-submit-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border: none;
+    background: var(--primary);
+    color: white;
+}
+
+.kt-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(47, 125, 74, 0.22);
+}
+
+.kt-submit-arrow {
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   SUCCESS MODAL
+========================================================= */
+
+.kt-success-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: none;
+    place-items: center;
+    padding: 20px;
+    background: rgba(12, 25, 16, 0.55);
+    backdrop-filter: blur(6px);
+}
+
+.kt-success-modal.show {
+    display: grid;
+}
+
+.kt-success-card {
+    width: min(430px, 100%);
+    padding: 36px;
+    border-radius: 24px;
+    background: var(--surface);
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    animation: ktModalPop 0.35s ease both;
+}
+
+@keyframes ktModalPop {
+
+    from {
+        opacity: 0;
+        transform: scale(0.94) translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+}
+
+.kt-success-circle {
+    width: 66px;
+    height: 66px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 1.7rem;
+    font-weight: 900;
+}
+
+.kt-success-card h2 {
+    margin: 9px 0 10px;
+    font-size: 1.3rem;
+}
+
+.kt-success-card > p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    line-height: 1.7;
+}
+
+.kt-request-status {
+    margin: 23px 0;
+    padding: 16px;
+    border-radius: 14px;
+    background: var(--primary-light);
+}
+
+.kt-request-status span {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-muted);
+    font-size: 0.56rem;
+    font-weight: 800;
+}
+
+.kt-request-status strong {
+    color: var(--primary);
+    font-size: 0.78rem;
+}
+
+.kt-success-btn {
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 12px;
+    background: var(--primary);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .kt-procurement-page {
+        padding: 30px 25px 60px;
+    }
+
+    .kt-procurement-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .kt-bank-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .kt-location-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .kt-form-grid,
+    .kt-bank-grid,
+    .kt-location-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .kt-progress {
+        width: 100%;
+    }
+
+    .kt-aadhaar-row {
+        flex-direction: column;
+    }
+
+    .kt-verify-aadhaar-btn {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .kt-procurement-page {
+        padding: 22px 15px 50px;
+    }
+
+    .kt-procurement-card {
+        border-radius: 18px;
+    }
+
+    .kt-progress-number {
+        width: 31px;
+        height: 31px;
+    }
+
+    .kt-otp-panel {
+        padding: 18px;
+    }
+
+    .kt-otp-inputs {
+        justify-content: space-between;
+        gap: 5px;
+    }
+
+    .kt-otp-input {
+        width: min(13vw, 46px);
+        height: 50px;
+    }
+
+    .kt-otp-bottom {
+        flex-wrap: wrap;
+    }
+
+    .kt-verify-otp-btn,
+    .kt-resend-otp-btn {
+        flex: 1;
+    }
+
+    .kt-otp-timer {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .kt-lock-message {
+        align-items: flex-start;
+    }
+
+    .kt-form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .kt-clear-btn,
+    .kt-submit-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kt-success-card {
+        padding: 28px 20px;
+    }
+
+}
+/* =========================================================
+   KISAN TURN - UPDATED DASHBOARD
+========================================================= */
+
+.kt-dashboard-page {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 36px 40px 70px;
+}
+
+
+/* =========================================================
+   WELCOME
+========================================================= */
+
+.kt-dashboard-welcome {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 28px;
+}
+
+.kt-dashboard-label {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--primary);
+    font-size: 0.58rem;
+    font-weight: 850;
+    letter-spacing: 0.13em;
+}
+
+.kt-dashboard-welcome h2 {
+    max-width: 650px;
+    margin: 0 0 10px;
+    font-size: clamp(1.6rem, 3vw, 2.35rem);
+    letter-spacing: -0.04em;
+}
+
+.kt-dashboard-welcome p {
+    max-width: 650px;
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.74rem;
+    line-height: 1.75;
+}
+
+.kt-dashboard-primary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 20px;
+    flex-shrink: 0;
+    border-radius: 13px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    font-size: 0.68rem;
+    font-weight: 750;
+    transition: 0.25s ease;
+}
+
+.kt-dashboard-primary-btn span {
+    font-size: 1.1rem;
+}
+
+.kt-dashboard-primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(47, 125, 74, 0.22);
+}
+
+
+/* =========================================================
+   PROCUREMENT STATUS CARD
+========================================================= */
+
+.kt-dashboard-status-card {
+    padding: clamp(22px, 4vw, 34px);
+    margin-bottom: 22px;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(47, 125, 74, 0.05),
+            transparent 55%
+        ),
+        var(--surface);
+    box-shadow: var(--shadow-sm);
+}
+
+.kt-status-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.kt-status-card-top h3 {
+    margin: 0 0 7px;
+    font-size: 1.1rem;
+}
+
+.kt-status-card-top p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    line-height: 1.6;
+}
+
+.kt-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 11px;
+    border-radius: 30px;
+    white-space: nowrap;
+    font-size: 0.6rem;
+    font-weight: 800;
+}
+
+.kt-status-pill span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.kt-status-pill.not-started {
+    background: #f3f4f6;
+    color: #737780;
+}
+
+.kt-status-pill.not-started span {
+    background: #737780;
+}
+
+.kt-status-pill.processing {
+    background: #fff6df;
+    color: #a76b00;
+}
+
+.kt-status-pill.processing span {
+    background: #d99600;
+}
+
+.kt-status-pill.completed {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.kt-status-pill.completed span {
+    background: var(--primary);
+}
+
+
+/* =========================================================
+   PROCUREMENT PROGRESS
+========================================================= */
+
+.kt-dashboard-progress {
+    display: flex;
+    align-items: flex-start;
+    margin: 34px 0 28px;
+}
+
+.kt-dashboard-progress-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+}
+
+.kt-dashboard-progress-dot {
+    width: 31px;
+    height: 31px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 0.62rem;
+    font-weight: 800;
+    transition: 0.3s ease;
+}
+
+.kt-dashboard-progress-item strong {
+    display: block;
+    margin: 2px 0 4px;
+    color: var(--text);
+    font-size: 0.66rem;
+}
+
+.kt-dashboard-progress-item span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.56rem;
+    line-height: 1.45;
+}
+
+.kt-dashboard-progress-item.active .kt-dashboard-progress-dot,
+.kt-dashboard-progress-item.completed .kt-dashboard-progress-dot {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: white;
+}
+
+.kt-dashboard-progress-line {
+    height: 2px;
+    flex: 0.5;
+    min-width: 20px;
+    margin: 15px 8px 0;
+    background: var(--border);
+}
+
+.kt-dashboard-progress-line.completed {
+    background: var(--primary);
+}
+
+
+/* =========================================================
+   STATUS FOOTER
+========================================================= */
+
+.kt-status-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    gap: 15px;
+}
+
+.kt-status-card-footer span {
+    color: var(--text-muted);
+    font-size: 0.63rem;
+}
+
+.kt-status-card-footer a {
+    color: var(--primary);
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 0.65rem;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.kt-dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.kt-dashboard-stat {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    background: var(--surface);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.kt-dashboard-stat:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+}
+
+.kt-stat-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: var(--primary-light);
+    font-size: 1rem;
+}
+
+.kt-dashboard-stat span {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--text-muted);
+    font-size: 0.57rem;
+}
+
+.kt-dashboard-stat strong {
+    display: block;
+    overflow: hidden;
+    color: var(--text);
+    font-size: 0.78rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   LOWER GRID
+========================================================= */
+
+.kt-dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 22px;
+}
+
+.kt-dashboard-panel {
+    min-height: 300px;
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+}
+
+.kt-panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.kt-panel-heading h3 {
+    margin: 0;
+    font-size: 0.98rem;
+}
+
+.kt-panel-link {
+    padding: 4px;
+    border: none;
+    background: transparent;
+    color: var(--primary);
+    font-size: 0.62rem;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+.kt-quick-actions {
+    display: grid;
+    gap: 10px;
+}
+
+.kt-quick-action {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 13px;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    background: #fafcfb;
+    color: inherit;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.kt-quick-action:hover {
+    border-color: var(--border);
+    background: var(--surface);
+    transform: translateX(3px);
+}
+
+.kt-quick-action-icon {
+    width: 39px;
+    height: 39px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 11px;
+    background: var(--primary-light);
+    font-size: 0.85rem;
+}
+
+.kt-quick-action strong {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 0.66rem;
+}
+
+.kt-quick-action span {
+    color: var(--text-muted);
+    font-size: 0.56rem;
+}
+
+.kt-quick-action b {
+    margin-left: auto;
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   ACTIVITY
+========================================================= */
+
+.kt-activity-list {
+    display: grid;
+    gap: 12px;
+}
+
+.kt-empty-activity {
+    display: grid;
+    place-items: center;
+    min-height: 190px;
+    text-align: center;
+}
+
+.kt-empty-activity div {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 10px;
+    border-radius: 14px;
+    background: var(--primary-light);
+}
+
+.kt-empty-activity strong {
+    font-size: 0.7rem;
+}
+
+.kt-empty-activity p {
+    margin: 5px 0 0;
+    color: var(--text-muted);
+    font-size: 0.58rem;
+}
+
+
+/* =========================================================
+   ACTIVITY ITEM
+========================================================= */
+
+.kt-activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.kt-activity-item:last-child {
+    border-bottom: none;
+}
+
+.kt-activity-icon {
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: var(--primary-light);
+    font-size: 0.75rem;
+}
+
+.kt-activity-content strong {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 0.63rem;
+}
+
+.kt-activity-content span {
+    color: var(--text-muted);
+    font-size: 0.55rem;
+}
+
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.kt-dashboard-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-top: 22px;
+    padding: 17px 20px;
+    border: 1px solid #dce9df;
+    border-radius: 16px;
+    background: var(--primary-light);
+}
+
+.kt-dashboard-info-icon {
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+.kt-dashboard-info strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.68rem;
+}
+
+.kt-dashboard-info p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.62rem;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .kt-dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 950px) {
+
+    .kt-dashboard-page {
+        padding: 30px 25px 60px;
+    }
+
+    .kt-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .kt-dashboard-progress {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .kt-dashboard-progress-item {
+        width: 100%;
+    }
+
+    .kt-dashboard-progress-line {
+        width: 2px;
+        min-width: 2px;
+        height: 20px;
+        margin: 5px 0 5px 15px;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .kt-dashboard-page {
+        padding: 22px 15px 50px;
+    }
+
+    .kt-dashboard-welcome {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .kt-dashboard-primary-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kt-status-card-top {
+        flex-direction: column;
+    }
+
+    .kt-dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .kt-dashboard-panel {
+        padding: 19px;
+    }
+
+    .kt-status-card-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}

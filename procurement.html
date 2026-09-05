@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Make Procurement | Kisan Turn</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- Mobile Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+
+        <div class="dashboard-brand">
+            <span class="dashboard-brand-icon">🌾</span>
+            <span class="dashboard-brand-text">Kisan Turn</span>
+        </div>
+
+
+        <div class="sidebar-profile">
+
+            <div class="sidebar-avatar">
+                👨‍🌾
+            </div>
+
+            <div>
+                <strong>Farmer</strong>
+                <span>Procurement Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="dashboard-nav">
+
+            <p class="nav-section-title">
+                MAIN MENU
+            </p>
+
+
+            <a href="dashboard.html" class="dashboard-nav-link">
+
+                <span class="nav-icon">▦</span>
+
+                Dashboard
+
+            </a>
+
+
+            <a href="procurement.html" class="dashboard-nav-link active">
+
+                <span class="nav-icon">📋</span>
+
+                Make Procurement
+
+            </a>
+
+
+            <a href="notification.html" class="dashboard-nav-link">
+
+                <span class="nav-icon">🔔</span>
+
+                Notifications
+
+            </a>
+
+
+            <p class="nav-section-title secondary-nav-title">
+                ACCOUNT
+            </p>
+
+
+            <a href="settings.html" class="dashboard-nav-link">
+
+                <span class="nav-icon">⚙</span>
+
+                Settings
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="dashboard-nav-link"
+                id="logoutBtn"
+                type="button"
+            >
+
+                <span class="nav-icon">↪</span>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="dashboard-main">
+
+        <!-- HEADER -->
+
+        <header class="dashboard-header">
+
+            <div class="dashboard-header-left">
+
+                <button
+                    class="dashboard-menu-btn"
+                    id="dashboardMenuBtn"
+                    type="button"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <p class="dashboard-date">
+                        Procurement Registration
+                    </p>
+
+                    <h1>
+                        Make Procurement
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-header-actions">
+
+                <a
+                    href="notification.html"
+                    class="header-icon-btn"
+                    aria-label="Notifications"
+                >
+
+                    🔔
+
+                    <span class="header-notification-dot"></span>
+
+                </a>
+
+
+                <div class="header-user">
+
+                    <div class="header-user-avatar">
+                        👨‍🌾
+                    </div>
+
+                    <div class="header-user-info">
+
+                        <strong>
+                            Farmer Account
+                        </strong>
+
+                        <span>
+                            Kisan Turn
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================
+             PROCUREMENT PAGE
+        ========================== -->
+
+        <section class="kt-procurement-page">
+
+
+            <!-- PAGE INTRO -->
+
+            <div class="kt-procurement-heading">
+
+                <div>
+
+                    <span class="kt-eyebrow">
+                        PROCUREMENT REGISTRATION
+                    </span>
+
+                    <h2>
+                        Create Procurement Request
+                    </h2>
+
+                    <p>
+                        Verify your identity first, then complete your
+                        banking and location details.
+                    </p>
+
+                </div>
+
+
+                <!-- PROGRESS -->
+
+                <div class="kt-progress">
+
+                    <div
+                        class="kt-progress-step active"
+                        data-step="1"
+                    >
+
+                        <div class="kt-progress-number">
+                            1
+                        </div>
+
+                        <span>
+                            Verify
+                        </span>
+
+                    </div>
+
+
+                    <div class="kt-progress-line"></div>
+
+
+                    <div
+                        class="kt-progress-step"
+                        data-step="2"
+                    >
+
+                        <div class="kt-progress-number">
+                            2
+                        </div>
+
+                        <span>
+                            Details
+                        </span>
+
+                    </div>
+
+
+                    <div class="kt-progress-line"></div>
+
+
+                    <div
+                        class="kt-progress-step"
+                        data-step="3"
+                    >
+
+                        <div class="kt-progress-number">
+                            3
+                        </div>
+
+                        <span>
+                            Submit
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 FORM CARD
+            ========================== -->
+
+            <div class="kt-procurement-card">
+
+
+                <form id="ktProcurementForm" novalidate>
+
+
+                    <!-- =====================
+                         IDENTITY SECTION
+                    ====================== -->
+
+                    <section class="kt-form-section">
+
+                        <div class="kt-section-title">
+
+                            <div class="kt-section-icon">
+                                👤
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Identity Verification
+                                </h3>
+
+                                <p>
+                                    Verify your Aadhaar to continue.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- NAME + MOBILE -->
+
+                        <div class="kt-form-grid">
+
+
+                            <div class="kt-field">
+
+                                <label for="ktFarmerName">
+                                    Full Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="ktFarmerName"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                >
+
+                                <span class="kt-field-error"></span>
+
+                            </div>
+
+
+
+                            <div class="kt-field">
+
+                                <label for="ktMobileNumber">
+                                    Mobile Number
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="ktMobileNumber"
+                                    placeholder="Enter 10 digit mobile number"
+                                    inputmode="numeric"
+                                    maxlength="10"
+                                    autocomplete="tel"
+                                >
+
+                                <span class="kt-field-error"></span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- AADHAAR CARD -->
+
+                        <div class="kt-aadhaar-card">
+
+                            <div class="kt-field">
+
+                                <label for="ktAadhaarNumber">
+                                    Aadhaar Number
+                                </label>
+
+
+                                <div class="kt-aadhaar-row">
+
+                                    <input
+                                        type="text"
+                                        id="ktAadhaarNumber"
+                                        placeholder="XXXX XXXX XXXX"
+                                        inputmode="numeric"
+                                        maxlength="14"
+                                    >
+
+
+                                    <button
+                                        type="button"
+                                        class="kt-verify-aadhaar-btn"
+                                        id="ktVerifyAadhaarBtn"
+                                    >
+
+                                        <span class="kt-btn-text">
+                                            Verify Aadhaar
+                                        </span>
+
+                                        <span class="kt-btn-loader"></span>
+
+                                    </button>
+
+                                </div>
+
+
+                                <span
+                                    class="kt-field-error"
+                                    id="ktAadhaarError"
+                                ></span>
+
+                            </div>
+
+
+                            <!-- STATUS -->
+
+                            <div
+                                class="kt-verification-status"
+                                id="ktVerificationStatus"
+                                aria-live="polite"
+                            ></div>
+
+                        </div>
+
+
+
+                        <!-- =====================
+                             OTP
+                        ====================== -->
+
+                        <div
+                            class="kt-otp-panel"
+                            id="ktOtpPanel"
+                        >
+
+                            <div class="kt-otp-top">
+
+                                <div>
+
+                                    <span class="kt-otp-badge">
+                                        OTP VERIFICATION
+                                    </span>
+
+                                    <h4>
+                                        Enter verification code
+                                    </h4>
+
+                                    <p>
+                                        Enter the 6-digit OTP sent
+                                        to your registered mobile number.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="kt-otp-inputs"
+                                id="ktOtpInputs"
+                            >
+
+                                <input
+                                    type="text"
+                                    inputmode="numeric"
+                                    maxlength="1"
+                                    class="kt-otp-input"
+                                >
+
+                                <input
+                                    type="text"
+                                    inputmode="numeric"
+                                    maxlength="1"
+                                    class="kt-otp-input"
+                                >
+
+                                <input
+                                    type="text"
+                                    inputmode="numeric"
+                                    maxlength="1"
+                                    class="kt-otp-input"
+                                >
+
+                                <input
+                                    type="text"
+                                    inputmode="numeric"
+                                    maxlength="1"
+                                    class="kt-otp-input"
+                                >
+
+                                <input
+                                    type="text"
+                                    inputmode="numeric"
+                                    maxlength="1"
+                                    class="kt-otp-input"
+                                >
+
+                                <input
+                                    type="text"
+                                    inputmode="numeric"
+                                    maxlength="1"
+                                    class="kt-otp-input"
+                                >
+
+                            </div>
+
+
+                            <div class="kt-otp-bottom">
+
+                                <button
+                                    type="button"
+                                    class="kt-verify-otp-btn"
+                                    id="ktVerifyOtpBtn"
+                                >
+                                    Verify OTP
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="kt-resend-otp-btn"
+                                    id="ktResendOtpBtn"
+                                >
+                                    Resend OTP
+                                </button>
+
+
+                                <span
+                                    class="kt-otp-timer"
+                                    id="ktOtpTimer"
+                                >
+                                    02:00
+                                </span>
+
+                            </div>
+
+
+                            <!-- STATIC DEMO ONLY -->
+
+                            <div
+                                class="kt-demo-otp"
+                                id="ktDemoOtp"
+                            ></div>
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- =====================
+                         LOCKED DETAILS
+                    ====================== -->
+
+                    <div
+                        class="kt-lock-message"
+                        id="ktLockMessage"
+                    >
+
+                        <div class="kt-lock-icon">
+                            🔒
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Complete Identity Verification
+                            </strong>
+
+                            <p>
+                                Banking and procurement location details
+                                will unlock after successful verification.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =====================
+                         DETAILS AREA
+                    ====================== -->
+
+                    <div
+                        class="kt-details-wrapper"
+                        id="ktDetailsWrapper"
+                    >
+
+
+                        <!-- BANK -->
+
+                        <section class="kt-form-section kt-details-section">
+
+                            <div class="kt-section-divider"></div>
+
+
+                            <div class="kt-section-title">
+
+                                <div class="kt-section-icon kt-bank-icon">
+                                    🏦
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Bank Details
+                                    </h3>
+
+                                    <p>
+                                        Used for procurement payment processing.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="kt-form-grid kt-bank-grid">
+
+
+                                <div class="kt-field">
+
+                                    <label for="ktBankName">
+                                        Bank Name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="ktBankName"
+                                        placeholder="Enter bank name"
+                                        disabled
+                                    >
+
+                                    <span class="kt-field-error"></span>
+
+                                </div>
+
+
+
+                                <div class="kt-field">
+
+                                    <label for="ktAccountNumber">
+                                        Account Number
+                                    </label>
+
+                                    <div class="kt-password-wrap">
+
+                                        <input
+                                            type="password"
+                                            id="ktAccountNumber"
+                                            placeholder="Enter account number"
+                                            inputmode="numeric"
+                                            disabled
+                                        >
+
+                                        <button
+                                            type="button"
+                                            class="kt-toggle-password"
+                                            id="ktToggleAccount"
+                                        >
+                                            Show
+                                        </button>
+
+                                    </div>
+
+                                    <span class="kt-field-error"></span>
+
+                                </div>
+
+
+
+                                <div class="kt-field">
+
+                                    <label for="ktIfscCode">
+                                        IFSC Code
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="ktIfscCode"
+                                        placeholder="Example: SBIN0001234"
+                                        maxlength="11"
+                                        autocomplete="off"
+                                        disabled
+                                    >
+
+                                    <span class="kt-field-error"></span>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <!-- LOCATION -->
+
+                        <section class="kt-form-section kt-details-section">
+
+                            <div class="kt-section-divider"></div>
+
+
+                            <div class="kt-section-title">
+
+                                <div class="kt-section-icon kt-location-icon">
+                                    📍
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Procurement Location
+                                    </h3>
+
+                                    <p>
+                                        Select the location for your procurement.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="kt-location-grid">
+
+
+                                <div class="kt-field">
+
+                                    <label for="ktState">
+                                        State
+                                    </label>
+
+                                    <select
+                                        id="ktState"
+                                        disabled
+                                    >
+
+                                        <option value="">
+                                            Select State
+                                        </option>
+
+                                        <option value="Andhra Pradesh">
+                                            Andhra Pradesh
+                                        </option>
+
+                                        <option value="Telangana">
+                                            Telangana
+                                        </option>
+
+                                        <option value="Karnataka">
+                                            Karnataka
+                                        </option>
+
+                                        <option value="Tamil Nadu">
+                                            Tamil Nadu
+                                        </option>
+
+                                        <option value="Maharashtra">
+                                            Maharashtra
+                                        </option>
+
+                                    </select>
+
+                                    <span class="kt-field-error"></span>
+
+                                </div>
+
+
+
+                                <div class="kt-field">
+
+                                    <label for="ktDistrict">
+                                        District
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="ktDistrict"
+                                        placeholder="Enter district"
+                                        disabled
+                                    >
+
+                                    <span class="kt-field-error"></span>
+
+                                </div>
+
+
+
+                                <div class="kt-field">
+
+                                    <label for="ktMandal">
+                                        Mandal
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="ktMandal"
+                                        placeholder="Enter mandal"
+                                        disabled
+                                    >
+
+                                    <span class="kt-field-error"></span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="kt-security-note">
+
+                                <span>ⓘ</span>
+
+                                <p>
+                                    Your submitted details are used for
+                                    procurement registration and processing.
+                                </p>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <!-- SUBMIT -->
+
+                        <div class="kt-form-actions">
+
+                            <button
+                                type="reset"
+                                class="kt-clear-btn"
+                            >
+                                Clear Form
+                            </button>
+
+
+                            <button
+                                type="submit"
+                                class="kt-submit-btn"
+                            >
+
+                                <span>
+                                    Submit Procurement Request
+                                </span>
+
+                                <span class="kt-submit-arrow">
+                                    →
+                                </span>
+
+                            </button>
+
+                        </div>
+
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         SUCCESS MODAL
+    ========================== -->
+
+    <div
+        class="kt-success-modal"
+        id="ktSuccessModal"
+    >
+
+        <div class="kt-success-card">
+
+            <div class="kt-success-circle">
+                ✓
+            </div>
+
+            <span class="kt-eyebrow">
+                REQUEST CREATED
+            </span>
+
+            <h2>
+                Procurement Request Submitted
+            </h2>
+
+            <p>
+                Your procurement request has been successfully created
+                and is now being processed.
+            </p>
+
+
+            <div class="kt-request-status">
+
+                <span>
+                    CURRENT STATUS
+                </span>
+
+                <strong>
+                    ● Processing
+                </strong>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="kt-success-btn"
+                id="ktGoDashboardBtn"
+            >
+                Go to Dashboard
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

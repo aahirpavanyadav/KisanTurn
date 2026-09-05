@@ -2,164 +2,70 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>Dashboard | Kisan Turn</title>
 
-    <meta
-        name="description"
-        content="Kisan Turn Farmer Dashboard"
-    >
-
-    <title>Kisan Turn | Farmer Dashboard</title>
-
-    <link
-        rel="stylesheet"
-        href="css/styles.css"
-    >
-
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-
 
 <body class="dashboard-body">
 
-
-    <!-- =========================
-         MOBILE OVERLAY
-    ========================== -->
-
-    <div
-        class="sidebar-overlay"
-        id="sidebarOverlay"
-    ></div>
-
+    <!-- Mobile Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 
     <!-- =========================
          SIDEBAR
     ========================== -->
 
-    <aside
-        class="dashboard-sidebar"
-        id="dashboardSidebar"
-    >
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
 
+        <div class="dashboard-brand">
+            <span class="dashboard-brand-icon">🌾</span>
+            <span class="dashboard-brand-text">Kisan Turn</span>
+        </div>
 
-        <!-- LOGO -->
-
-        <a
-            href="index.html"
-            class="dashboard-brand"
-        >
-
-            <span class="dashboard-brand-icon">
-                🌾
-            </span>
-
-            <span class="dashboard-brand-text">
-                Kisan Turn
-            </span>
-
-        </a>
-
-
-
-        <!-- FARMER PROFILE -->
 
         <div class="sidebar-profile">
 
             <div class="sidebar-avatar">
-
                 👨‍🌾
-
             </div>
 
-
             <div>
-
-                <strong>
-                    Farmer Account
-                </strong>
-
-                <span>
-                    ID: KT-10482
-                </span>
-
+                <strong>Farmer</strong>
+                <span>Procurement Portal</span>
             </div>
 
         </div>
 
 
-
-        <!-- NAVIGATION -->
-
         <nav class="dashboard-nav">
-
 
             <p class="nav-section-title">
                 MAIN MENU
             </p>
 
 
-            <a
-                href="dashboard.html"
-                class="dashboard-nav-link active"
-            >
-
-                <span class="nav-icon">
-                    ▦
-                </span>
-
+            <a href="dashboard.html" class="dashboard-nav-link active">
+                <span class="nav-icon">▦</span>
                 Dashboard
-
             </a>
 
 
-            <a
-                href="#"
-                class="dashboard-nav-link"
-            >
-
-                <span class="nav-icon">
-                    🎫
-                </span>
-
-                My Token
-
+            <a href="procurement.html" class="dashboard-nav-link">
+                <span class="nav-icon">📋</span>
+                Make Procurement
             </a>
 
 
-            <a
-                href="#"
-                class="dashboard-nav-link"
-            >
-
-                <span class="nav-icon">
-                    📍
-                </span>
-
-                Live Queue
-
+            <a href="notification.html" class="dashboard-nav-link">
+                <span class="nav-icon">🔔</span>
+                Notifications
+                <span class="dashboard-nav-badge">2</span>
             </a>
-
-
-            <a
-                href="#"
-                class="dashboard-nav-link"
-            >
-
-                <span class="nav-icon">
-                    📦
-                </span>
-
-                Procurement Status
-
-            </a>
-
 
 
             <p class="nav-section-title secondary-nav-title">
@@ -167,122 +73,58 @@
             </p>
 
 
-            <a
-                href="/notification.html"
-                class="dashboard-nav-link"
-            >
-
-                <span class="nav-icon">
-                    🔔
-                </span>
-
-                Notifications
-
-                <span class="nav-notification">
-                    3
-                </span>
-
-            </a>
-
-
-            <a
-                href="/settings.html"
-                class="dashboard-nav-link"
-            >
-
-                <span class="nav-icon">
-                    ⚙
-                </span>
-
+            <a href="settings.html" class="dashboard-nav-link">
+                <span class="nav-icon">⚙</span>
                 Settings
-
             </a>
-
 
         </nav>
 
 
-
-        <!-- SIDEBAR BOTTOM -->
-
         <div class="sidebar-bottom">
 
-
-            <a
-                href="index.html"
-                class="dashboard-nav-link"
-            >
-
-                <span class="nav-icon">
-                    ↗
-                </span>
-
-                Back to Website
-
-            </a>
-
-
-            <button
-                class="dashboard-nav-link logout-btn"
-                id="logoutBtn"
-            >
-
-                <span class="nav-icon">
-                    ↪
-                </span>
-
+            <button class="dashboard-nav-link" id="logoutBtn" type="button">
+                <span class="nav-icon">↪</span>
                 Logout
-
             </button>
 
         </div>
-
 
     </aside>
 
 
 
     <!-- =========================
-         MAIN DASHBOARD
+         MAIN CONTENT
     ========================== -->
 
     <main class="dashboard-main">
 
 
-        <!-- =========================
-             TOP BAR
-        ========================== -->
+        <!-- HEADER -->
 
         <header class="dashboard-header">
 
-
             <div class="dashboard-header-left">
-
 
                 <button
                     class="dashboard-menu-btn"
                     id="dashboardMenuBtn"
+                    type="button"
                     aria-label="Open menu"
                 >
-
                     ☰
-
                 </button>
 
 
                 <div>
 
-                    <p class="dashboard-date">
-
-                        <span id="currentDate">
-                            Loading date...
-                        </span>
-
+                    <p class="dashboard-date" id="dashboardDate">
+                        Welcome back
                     </p>
 
-
                     <h1>
-                        Good Morning, <span>Farmer</span> 👋
+                        Farmer Dashboard
                     </h1>
 
                 </div>
@@ -290,49 +132,40 @@
             </div>
 
 
-
             <div class="dashboard-header-actions">
 
-
-                <button
+                <a
+                    href="notification.html"
                     class="header-icon-btn"
-                    id="notificationBtn"
                     aria-label="Notifications"
                 >
-
                     🔔
 
                     <span class="header-notification-dot"></span>
-
-                </button>
+                </a>
 
 
                 <div class="header-user">
 
                     <div class="header-user-avatar">
-
                         👨‍🌾
-
                     </div>
-
 
                     <div class="header-user-info">
 
                         <strong>
-                            Farmer
+                            Farmer Account
                         </strong>
 
                         <span>
-                            Verified Account
+                            Kisan Turn
                         </span>
 
                     </div>
 
                 </div>
 
-
             </div>
-
 
         </header>
 
@@ -342,1017 +175,474 @@
              DASHBOARD CONTENT
         ========================== -->
 
-        <section class="dashboard-content">
+        <section class="kt-dashboard-page">
 
 
+            <!-- WELCOME AREA -->
 
-            <!-- =========================
-                 ALERT
-            ========================== -->
+            <div class="kt-dashboard-welcome">
 
-            <div class="dashboard-alert">
+                <div>
 
-                <div class="alert-icon">
+                    <span class="kt-dashboard-label">
+                        PROCUREMENT MANAGEMENT
+                    </span>
 
-                    🔔
-
-                </div>
-
-
-                <div class="alert-content">
-
-                    <strong>
-                        Your turn is getting closer!
-                    </strong>
+                    <h2>
+                        Track your procurement in one place.
+                    </h2>
 
                     <p>
-                        Only <span id="farmersAheadAlert">3</span>
-                        farmers are ahead of you.
+                        Complete your registration, submit procurement
+                        details and track the current status without
+                        visiting the procurement center repeatedly.
                     </p>
 
                 </div>
 
 
-                <button
-                    class="alert-close"
-                    id="alertClose"
-                    aria-label="Close alert"
-                >
-
-                    ×
-
-                </button>
+                <a href="procurement.html" class="kt-dashboard-primary-btn">
+                    <span>+</span>
+                    Make Procurement
+                </a>
 
             </div>
 
 
 
-            <!-- =========================
-                 OVERVIEW CARDS
-            ========================== -->
+            <!-- =====================
+                 PROCUREMENT STATUS
+            ====================== -->
 
-            <div class="overview-grid">
+            <div class="kt-dashboard-status-card">
 
+                <div class="kt-status-card-top">
 
-                <!-- POSITION -->
+                    <div>
 
-                <article class="overview-card position-card">
-
-                    <div class="overview-card-top">
-
-                        <span class="overview-label">
-                            YOUR POSITION
+                        <span class="kt-dashboard-label">
+                            CURRENT PROCUREMENT
                         </span>
 
-                        <span class="overview-icon">
-                            📍
-                        </span>
-
-                    </div>
-
-
-                    <div class="overview-value">
-
-                        <strong id="queuePosition">
-                            #4
-                        </strong>
-
-                        <span>
-                            in queue
-                        </span>
-
-                    </div>
-
-
-                    <div class="overview-footer">
-
-                        <span class="status-up">
-                            ↑ Moving closer
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- CURRENT TOKEN -->
-
-                <article class="overview-card">
-
-                    <div class="overview-card-top">
-
-                        <span class="overview-label">
-                            CURRENT TOKEN
-                        </span>
-
-                        <span class="overview-icon">
-                            🎫
-                        </span>
-
-                    </div>
-
-
-                    <div class="overview-value">
-
-                        <strong id="currentToken">
-                            A-039
-                        </strong>
-
-                    </div>
-
-
-                    <div class="overview-footer">
-
-                        <span>
-                            Processing now
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- WAIT TIME -->
-
-                <article class="overview-card">
-
-                    <div class="overview-card-top">
-
-                        <span class="overview-label">
-                            ESTIMATED WAIT
-                        </span>
-
-                        <span class="overview-icon">
-                            ⏱
-                        </span>
-
-                    </div>
-
-
-                    <div class="overview-value">
-
-                        <strong id="waitTime">
-                            25
-                        </strong>
-
-                        <span>
-                            minutes
-                        </span>
-
-                    </div>
-
-
-                    <div class="overview-footer">
-
-                        <span>
-                            Approximate time
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- STATUS -->
-
-                <article class="overview-card status-overview">
-
-                    <div class="overview-card-top">
-
-                        <span class="overview-label">
-                            PROCUREMENT
-                        </span>
-
-                        <span class="overview-icon">
-                            📦
-                        </span>
-
-                    </div>
-
-
-                    <div class="overview-value">
-
-                        <strong>
-                            Active
-                        </strong>
-
-                    </div>
-
-
-                    <div class="overview-footer">
-
-                        <span class="live-indicator">
-
-                            <i></i>
-
-                            Live tracking
-
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-            </div>
-
-
-
-            <!-- =========================
-                 MAIN GRID
-            ========================== -->
-
-            <div class="dashboard-grid">
-
-
-
-                <!-- =========================
-                     LIVE QUEUE
-                ========================== -->
-
-                <section class="dashboard-card live-queue-card">
-
-
-                    <div class="card-header">
-
-                        <div>
-
-                            <span class="card-eyebrow">
-                                REAL-TIME TRACKING
-                            </span>
-
-                            <h2>
-                                Live Queue
-                            </h2>
-
-                        </div>
-
-
-                        <div class="live-badge">
-
-                            <span></span>
-
-                            LIVE
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- QUEUE VISUAL -->
-
-                    <div class="queue-visual">
-
-
-                        <div class="queue-progress-line">
-
-                            <div
-                                class="queue-progress-fill"
-                                id="queueProgressFill"
-                            ></div>
-
-                        </div>
-
-
-
-                        <div class="queue-steps">
-
-
-                            <!-- CURRENT -->
-
-                            <div class="queue-step completed">
-
-                                <div class="queue-circle">
-
-                                    ✓
-
-                                </div>
-
-                                <div class="queue-step-info">
-
-                                    <strong>
-                                        A-039
-                                    </strong>
-
-                                    <span>
-                                        Processing
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-
-
-                            <!-- NEXT -->
-
-                            <div class="queue-step">
-
-                                <div class="queue-circle">
-
-                                    1
-
-                                </div>
-
-                                <div class="queue-step-info">
-
-                                    <strong>
-                                        A-040
-                                    </strong>
-
-                                    <span>
-                                        Ahead of you
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-
-
-                            <div class="queue-step">
-
-                                <div class="queue-circle">
-
-                                    2
-
-                                </div>
-
-                                <div class="queue-step-info">
-
-                                    <strong>
-                                        A-041
-                                    </strong>
-
-                                    <span>
-                                        Ahead of you
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-
-
-                            <div class="queue-step">
-
-                                <div class="queue-circle">
-
-                                    3
-
-                                </div>
-
-                                <div class="queue-step-info">
-
-                                    <strong>
-                                        A-042
-                                    </strong>
-
-                                    <span>
-                                        Ahead of you
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-
-
-                            <!-- USER -->
-
-                            <div class="queue-step your-turn">
-
-                                <div class="queue-circle">
-
-                                    🌾
-
-                                </div>
-
-                                <div class="queue-step-info">
-
-                                    <strong>
-                                        A-043
-                                    </strong>
-
-                                    <span>
-                                        Your Token
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-
-                    <!-- QUEUE BOTTOM -->
-
-                    <div class="queue-summary">
-
-
-                        <div>
-
-                            <span>
-                                Farmers Ahead
-                            </span>
-
-                            <strong
-                                id="farmersAhead"
-                            >
-                                3
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                Your Token
-                            </span>
-
-                            <strong>
-                                A-043
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                Queue Progress
-                            </span>
-
-                            <strong
-                                id="queueProgressText"
-                            >
-                                80%
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                </section>
-
-
-
-                <!-- =========================
-                     QUICK ACTIONS
-                ========================== -->
-
-                <section class="dashboard-card quick-actions-card">
-
-
-                    <div class="card-header">
-
-                        <div>
-
-                            <span class="card-eyebrow">
-                                SHORTCUTS
-                            </span>
-
-                            <h2>
-                                Quick Actions
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="quick-actions-grid">
-
-
-                        <button class="quick-action">
-
-                            <span>
-                                🎫
-                            </span>
-
-                            <small>
-                                My Token
-                            </small>
-
-                        </button>
-
-
-                        <button class="quick-action">
-
-                            <span>
-                                📍
-                            </span>
-
-                            <small>
-                                Track Queue
-                            </small>
-
-                        </button>
-
-
-                        <button class="quick-action">
-
-                            <span>
-                                📦
-                            </span>
-
-                            <small>
-                                Status
-                            </small>
-
-                        </button>
-
-
-                        <button class="quick-action">
-
-                            <span>
-                                📞
-                            </span>
-
-                            <small>
-                                Help
-                            </small>
-
-                        </button>
-
-
-                    </div>
-
-
-                    <div class="queue-tip">
-
-                        <span>
-                            💡
-                        </span>
-
-                        <p>
-                            Keep checking your queue position before travelling to the procurement center.
+                        <h3 id="ktProcurementTitle">
+                            No Active Procurement
+                        </h3>
+
+                        <p id="ktProcurementDescription">
+                            Start a procurement registration to submit
+                            your details and track the process.
                         </p>
 
                     </div>
 
 
-                </section>
+                    <div
+                        class="kt-status-pill not-started"
+                        id="ktStatusPill"
+                    >
+                        <span></span>
+                        Not Started
+                    </div>
 
+                </div>
+
+
+                <!-- STATUS PROGRESS -->
+
+                <div class="kt-dashboard-progress">
+
+                    <div class="kt-dashboard-progress-item active">
+
+                        <div class="kt-dashboard-progress-dot">
+                            ✓
+                        </div>
+
+                        <div>
+                            <strong>
+                                Registration
+                            </strong>
+
+                            <span>
+                                Start procurement registration
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="kt-dashboard-progress-line"></div>
+
+
+                    <div class="kt-dashboard-progress-item">
+
+                        <div class="kt-dashboard-progress-dot">
+                            2
+                        </div>
+
+                        <div>
+                            <strong>
+                                Verification
+                            </strong>
+
+                            <span>
+                                Verify identity and details
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="kt-dashboard-progress-line"></div>
+
+
+                    <div class="kt-dashboard-progress-item">
+
+                        <div class="kt-dashboard-progress-dot">
+                            3
+                        </div>
+
+                        <div>
+                            <strong>
+                                Processing
+                            </strong>
+
+                            <span>
+                                Procurement request processing
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="kt-dashboard-progress-line"></div>
+
+
+                    <div class="kt-dashboard-progress-item">
+
+                        <div class="kt-dashboard-progress-dot">
+                            4
+                        </div>
+
+                        <div>
+                            <strong>
+                                Completed
+                            </strong>
+
+                            <span>
+                                Procurement completed
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="kt-status-card-footer">
+
+                    <span>
+                        Complete your procurement registration to continue.
+                    </span>
+
+                    <a href="procurement.html">
+                        Continue →
+                    </a>
+
+                </div>
 
             </div>
 
 
 
-            <!-- =========================
+            <!-- =====================
+                 STATS
+            ====================== -->
+
+            <div class="kt-dashboard-stats">
+
+
+                <div class="kt-dashboard-stat">
+
+                    <div class="kt-stat-icon">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Procurement Requests
+                        </span>
+
+                        <strong id="ktRequestCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="kt-dashboard-stat">
+
+                    <div class="kt-stat-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Identity Status
+                        </span>
+
+                        <strong id="ktIdentityStatus">
+                            Not Verified
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="kt-dashboard-stat">
+
+                    <div class="kt-stat-icon">
+                        ⏳
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Current Status
+                        </span>
+
+                        <strong id="ktCurrentStatus">
+                            Not Started
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="kt-dashboard-stat">
+
+                    <div class="kt-stat-icon">
+                        🔔
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Notifications
+                        </span>
+
+                        <strong>
+                            2
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================
                  LOWER GRID
-            ========================== -->
+            ====================== -->
 
-            <div class="dashboard-grid lower-dashboard-grid">
-
-
-
-                <!-- PROCUREMENT DETAILS -->
-
-                <section class="dashboard-card procurement-card">
+            <div class="kt-dashboard-grid">
 
 
-                    <div class="card-header">
+                <!-- QUICK ACTIONS -->
+
+                <div class="kt-dashboard-panel">
+
+                    <div class="kt-panel-heading">
 
                         <div>
 
-                            <span class="card-eyebrow">
-                                CURRENT REQUEST
+                            <span class="kt-dashboard-label">
+                                QUICK ACTIONS
                             </span>
-
-                            <h2>
-                                Procurement Details
-                            </h2>
-
-                        </div>
-
-
-                        <button class="more-btn">
-
-                            •••
-
-                        </button>
-
-                    </div>
-
-
-
-                    <div class="procurement-info-grid">
-
-
-                        <div class="procurement-info">
-
-                            <span>
-                                Crop
-                            </span>
-
-                            <strong>
-                                Wheat
-                            </strong>
-
-                        </div>
-
-
-                        <div class="procurement-info">
-
-                            <span>
-                                Quantity
-                            </span>
-
-                            <strong>
-                                25 Quintals
-                            </strong>
-
-                        </div>
-
-
-                        <div class="procurement-info">
-
-                            <span>
-                                Center
-                            </span>
-
-                            <strong>
-                                Procurement Center 01
-                            </strong>
-
-                        </div>
-
-
-                        <div class="procurement-info">
-
-                            <span>
-                                Date
-                            </span>
-
-                            <strong>
-                                Today
-                            </strong>
-
-                        </div>
-
-
-                    </div>
-
-
-
-                    <!-- PROCUREMENT STATUS -->
-
-                    <div class="procurement-status">
-
-
-                        <div class="status-header">
 
                             <h3>
-                                Procurement Progress
+                                Manage Procurement
                             </h3>
 
-                            <span>
-                                Step 2 of 4
-                            </span>
-
                         </div>
-
-
-                        <div class="status-steps">
-
-
-                            <div class="status-step completed">
-
-                                <div>
-                                    ✓
-                                </div>
-
-                                <span>
-                                    Registered
-                                </span>
-
-                            </div>
-
-
-                            <div class="status-step active">
-
-                                <div>
-                                    2
-                                </div>
-
-                                <span>
-                                    In Queue
-                                </span>
-
-                            </div>
-
-
-                            <div class="status-step">
-
-                                <div>
-                                    3
-                                </div>
-
-                                <span>
-                                    Verification
-                                </span>
-
-                            </div>
-
-
-                            <div class="status-step">
-
-                                <div>
-                                    4
-                                </div>
-
-                                <span>
-                                    Completed
-                                </span>
-
-                            </div>
-
-
-                        </div>
-
 
                     </div>
 
 
-                </section>
+                    <div class="kt-quick-actions">
+
+                        <a href="procurement.html" class="kt-quick-action">
+
+                            <div class="kt-quick-action-icon">
+                                📋
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Make Procurement
+                                </strong>
+
+                                <span>
+                                    Create a new request
+                                </span>
+
+                            </div>
+
+                            <b>→</b>
+
+                        </a>
+
+
+                        <a href="notification.html" class="kt-quick-action">
+
+                            <div class="kt-quick-action-icon">
+                                🔔
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    View Updates
+                                </strong>
+
+                                <span>
+                                    Check procurement notifications
+                                </span>
+
+                            </div>
+
+                            <b>→</b>
+
+                        </a>
+
+
+                        <a href="settings.html" class="kt-quick-action">
+
+                            <div class="kt-quick-action-icon">
+                                ⚙
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Account Settings
+                                </strong>
+
+                                <span>
+                                    Manage your account
+                                </span>
+
+                            </div>
+
+                            <b>→</b>
+
+                        </a>
+
+                    </div>
+
+                </div>
 
 
 
                 <!-- ACTIVITY -->
 
-                <section class="dashboard-card activity-card">
+                <div class="kt-dashboard-panel">
 
-
-                    <div class="card-header">
+                    <div class="kt-panel-heading">
 
                         <div>
 
-                            <span class="card-eyebrow">
-                                LATEST UPDATES
+                            <span class="kt-dashboard-label">
+                                ACTIVITY
                             </span>
 
-                            <h2>
+                            <h3>
                                 Recent Activity
-                            </h2>
+                            </h3>
 
                         </div>
 
-
                         <button
-                            class="view-all-btn"
-                            id="viewAllActivity"
+                            type="button"
+                            class="kt-panel-link"
+                            id="ktClearActivity"
                         >
-
-                            View All
-
+                            Clear
                         </button>
 
                     </div>
 
 
+                    <div
+                        class="kt-activity-list"
+                        id="ktActivityList"
+                    >
 
-                    <div class="activity-list">
+                        <div class="kt-empty-activity">
 
-
-                        <div class="activity-item">
-
-                            <div class="activity-icon success">
-
-                                ✓
-
+                            <div>
+                                📋
                             </div>
 
+                            <strong>
+                                No activity yet
+                            </strong>
 
-                            <div class="activity-content">
-
-                                <strong>
-                                    Token Generated
-                                </strong>
-
-                                <p>
-                                    Your token A-043 has been created.
-                                </p>
-
-                                <span>
-                                    Today · 9:30 AM
-                                </span>
-
-                            </div>
+                            <p>
+                                Your procurement updates will appear here.
+                            </p>
 
                         </div>
-
-
-
-                        <div class="activity-item">
-
-                            <div class="activity-icon info">
-
-                                📍
-
-                            </div>
-
-
-                            <div class="activity-content">
-
-                                <strong>
-                                    Queue Updated
-                                </strong>
-
-                                <p>
-                                    Your current position is #4.
-                                </p>
-
-                                <span>
-                                    Today · 10:15 AM
-                                </span>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <div class="activity-item">
-
-                            <div class="activity-icon warning">
-
-                                🔔
-
-                            </div>
-
-
-                            <div class="activity-content">
-
-                                <strong>
-                                    Procurement Reminder
-                                </strong>
-
-                                <p>
-                                    Your turn is expected soon.
-                                </p>
-
-                                <span>
-                                    Today · 10:25 AM
-                                </span>
-
-                            </div>
-
-                        </div>
-
 
                     </div>
 
-
-                </section>
-
+                </div>
 
             </div>
 
+
+
+            <!-- =====================
+                 INFORMATION
+            ====================== -->
+
+            <div class="kt-dashboard-info">
+
+                <div class="kt-dashboard-info-icon">
+                    ⓘ
+                </div>
+
+                <div>
+
+                    <strong>
+                        Before creating a procurement request
+                    </strong>
+
+                    <p>
+                        Keep your Aadhaar-linked mobile number and bank
+                        account details ready. You will need to verify
+                        your identity before submitting the request.
+                    </p>
+
+                </div>
+
+            </div>
 
 
         </section>
 
-
     </main>
-
-
-
-    <!-- =========================
-         NOTIFICATION PANEL
-    ========================== -->
-
-    <div
-        class="notification-panel"
-        id="notificationPanel"
-    >
-
-
-        <div class="notification-panel-header">
-
-            <h3>
-                Notifications
-            </h3>
-
-
-            <button
-                id="closeNotificationPanel"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div class="notification-item unread">
-
-            <span>
-                🎫
-            </span>
-
-            <div>
-
-                <strong>
-                    Queue Update
-                </strong>
-
-                <p>
-                    You are now #4 in the queue.
-                </p>
-
-                <small>
-                    Just now
-                </small>
-
-            </div>
-
-        </div>
-
-
-        <div class="notification-item">
-
-            <span>
-                🔔
-            </span>
-
-            <div>
-
-                <strong>
-                    Turn Approaching
-                </strong>
-
-                <p>
-                    Only 3 farmers ahead of you.
-                </p>
-
-                <small>
-                    10 minutes ago
-                </small>
-
-            </div>
-
-        </div>
-
-
-        <div class="notification-item">
-
-            <span>
-                ✓
-            </span>
-
-            <div>
-
-                <strong>
-                    Token Generated
-                </strong>
-
-                <p>
-                    Your procurement token is active.
-                </p>
-
-                <small>
-                    Today
-                </small>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- =========================
-         TOAST
-    ========================== -->
-
-    <div
-        class="dashboard-toast"
-        id="dashboardToast"
-    >
-
-        <span id="toastIcon">
-            ✓
-        </span>
-
-        <p id="toastMessage">
-            Action completed successfully.
-        </p>
-
-    </div>
-
 
 
     <script src="js/script.js"></script>

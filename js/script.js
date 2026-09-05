@@ -2621,3 +2621,1472 @@ document.addEventListener(
 
     }
 );
+/* =========================================================
+   KISAN TURN - PROCUREMENT FLOW
+   Aadhaar Demo Verification + OTP + Validation
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.getElementById("ktProcurementForm");
+
+    /* Stop if this is not procurement.html */
+    if (!form) return;
+
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const farmerName =
+        document.getElementById("ktFarmerName");
+
+    const mobileNumber =
+        document.getElementById("ktMobileNumber");
+
+    const aadhaarNumber =
+        document.getElementById("ktAadhaarNumber");
+
+    const verifyAadhaarBtn =
+        document.getElementById("ktVerifyAadhaarBtn");
+
+    const verificationStatus =
+        document.getElementById("ktVerificationStatus");
+
+    const otpPanel =
+        document.getElementById("ktOtpPanel");
+
+    const otpInputs =
+        Array.from(
+            document.querySelectorAll(".kt-otp-input")
+        );
+
+    const verifyOtpBtn =
+        document.getElementById("ktVerifyOtpBtn");
+
+    const resendOtpBtn =
+        document.getElementById("ktResendOtpBtn");
+
+    const otpTimer =
+        document.getElementById("ktOtpTimer");
+
+    const demoOtp =
+        document.getElementById("ktDemoOtp");
+
+    const detailsWrapper =
+        document.getElementById("ktDetailsWrapper");
+
+    const lockMessage =
+        document.getElementById("ktLockMessage");
+
+    const ifscCode =
+        document.getElementById("ktIfscCode");
+
+    const bankName =
+        document.getElementById("ktBankName");
+
+    const accountNumber =
+        document.getElementById("ktAccountNumber");
+
+    const state =
+        document.getElementById("ktState");
+
+    const district =
+        document.getElementById("ktDistrict");
+
+    const mandal =
+        document.getElementById("ktMandal");
+
+    const toggleAccount =
+        document.getElementById("ktToggleAccount");
+
+    const successModal =
+        document.getElementById("ktSuccessModal");
+
+    const goDashboardBtn =
+        document.getElementById("ktGoDashboardBtn");
+
+
+    /* =====================================================
+       STATE
+    ===================================================== */
+
+    let generatedOTP = "";
+    let aadhaarVerified = false;
+    let otpSeconds = 120;
+    let otpTimerInterval = null;
+
+
+    /* =====================================================
+       HELPERS
+    ===================================================== */
+
+    function getField(input) {
+        return input.closest(".kt-field");
+    }
+
+
+    function showError(input, message) {
+
+        const field = getField(input);
+
+        if (!field) return;
+
+        field.classList.remove("is-success");
+        field.classList.add("is-error");
+
+        const error =
+            field.querySelector(".kt-field-error");
+
+        if (error) {
+            error.textContent = message;
+        }
+
+    }
+
+
+    function clearError(input) {
+
+        const field = getField(input);
+
+        if (!field) return;
+
+        field.classList.remove("is-error");
+
+        const error =
+            field.querySelector(".kt-field-error");
+
+        if (error) {
+            error.textContent = "";
+        }
+
+    }
+
+
+    function setFieldSuccess(input) {
+
+        const field = getField(input);
+
+        if (!field) return;
+
+        field.classList.remove("is-error");
+        field.classList.add("is-success");
+
+    }
+
+
+    function showStatus(message, type) {
+
+        verificationStatus.textContent = message;
+
+        verificationStatus.className =
+            "kt-verification-status show " + type;
+
+    }
+
+
+    function generateOTP() {
+
+        return Math.floor(
+            100000 + Math.random() * 900000
+        ).toString();
+
+    }
+
+
+    /* =====================================================
+       FORMAT MOBILE
+    ===================================================== */
+
+    mobileNumber.addEventListener("input", function () {
+
+        this.value =
+            this.value
+                .replace(/\D/g, "")
+                .slice(0, 10);
+
+        clearError(this);
+
+    });
+
+
+    /* =====================================================
+       FORMAT AADHAAR
+    ===================================================== */
+
+    aadhaarNumber.addEventListener("input", function () {
+
+        let value =
+            this.value
+                .replace(/\D/g, "")
+                .slice(0, 12);
+
+        this.value =
+            value.replace(
+                /(\d{4})(?=\d)/g,
+                "$1 "
+            );
+
+        clearError(this);
+
+    });
+
+
+    /* =====================================================
+       FORMAT IFSC
+    ===================================================== */
+
+    ifscCode.addEventListener("input", function () {
+
+        this.value =
+            this.value
+                .replace(/[^a-zA-Z0-9]/g, "")
+                .toUpperCase()
+                .slice(0, 11);
+
+        clearError(this);
+
+    });
+
+
+    /* =====================================================
+       LIVE ERROR CLEAR
+    ===================================================== */
+
+    [
+        farmerName,
+        mobileNumber,
+        aadhaarNumber,
+        bankName,
+        accountNumber,
+        ifscCode,
+        state,
+        district,
+        mandal
+    ].forEach(function (input) {
+
+        if (!input) return;
+
+        input.addEventListener("input", function () {
+            clearError(this);
+        });
+
+        input.addEventListener("change", function () {
+            clearError(this);
+        });
+
+    });
+
+
+    /* =====================================================
+       VALIDATE IDENTITY
+    ===================================================== */
+
+    function validateIdentity() {
+
+        let valid = true;
+
+        const name =
+            farmerName.value.trim();
+
+        const mobile =
+            mobileNumber.value.trim();
+
+        const aadhaar =
+            aadhaarNumber.value
+                .replace(/\s/g, "");
+
+
+        if (name.length < 3) {
+
+            showError(
+                farmerName,
+                "Please enter your full name."
+            );
+
+            valid = false;
+
+        }
+
+
+        if (!/^[6-9]\d{9}$/.test(mobile)) {
+
+            showError(
+                mobileNumber,
+                "Enter a valid 10-digit mobile number."
+            );
+
+            valid = false;
+
+        }
+
+
+        if (!/^\d{12}$/.test(aadhaar)) {
+
+            showError(
+                aadhaarNumber,
+                "Enter a valid 12-digit Aadhaar number."
+            );
+
+            valid = false;
+
+        }
+
+        return valid;
+
+    }
+
+
+    /* =====================================================
+       OTP TIMER
+    ===================================================== */
+
+    function startOtpTimer() {
+
+        clearInterval(otpTimerInterval);
+
+        otpSeconds = 120;
+
+        updateOtpTimer();
+
+
+        otpTimerInterval =
+            setInterval(function () {
+
+                otpSeconds--;
+
+                updateOtpTimer();
+
+
+                if (otpSeconds <= 0) {
+
+                    clearInterval(
+                        otpTimerInterval
+                    );
+
+                    otpTimer.textContent =
+                        "OTP Expired";
+
+                    demoOtp.textContent =
+                        "OTP expired. Please resend OTP.";
+
+                }
+
+            }, 1000);
+
+    }
+
+
+    function updateOtpTimer() {
+
+        const minutes =
+            Math.floor(otpSeconds / 60)
+                .toString()
+                .padStart(2, "0");
+
+        const seconds =
+            (otpSeconds % 60)
+                .toString()
+                .padStart(2, "0");
+
+        otpTimer.textContent =
+            minutes + ":" + seconds;
+
+    }
+
+
+    /* =====================================================
+       SEND OTP
+    ===================================================== */
+
+    function sendOTP() {
+
+        generatedOTP = generateOTP();
+
+        otpInputs.forEach(function (input) {
+            input.value = "";
+            input.classList.remove("error");
+        });
+
+
+        otpPanel.classList.add("show");
+
+        startOtpTimer();
+
+
+        /*
+           STATIC SIH DEMO ONLY
+
+           For production:
+           OTP must be generated and verified
+           through a secure authorized backend.
+        */
+
+        demoOtp.textContent =
+            "Demo OTP: " + generatedOTP;
+
+
+        setTimeout(function () {
+
+            otpInputs[0].focus();
+
+        }, 350);
+
+    }
+
+
+    /* =====================================================
+       VERIFY AADHAAR BUTTON
+    ===================================================== */
+
+    verifyAadhaarBtn.addEventListener(
+        "click",
+        function () {
+
+            if (!validateIdentity()) {
+
+                showStatus(
+                    "Please correct the highlighted details.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            /* Loading animation */
+
+            verifyAadhaarBtn.classList.add(
+                "loading"
+            );
+
+            verifyAadhaarBtn.disabled = true;
+
+
+            setTimeout(function () {
+
+                verifyAadhaarBtn.classList.remove(
+                    "loading"
+                );
+
+                verifyAadhaarBtn.disabled = false;
+
+
+                showStatus(
+                    "OTP sent successfully. Enter the verification code.",
+                    "success"
+                );
+
+
+                sendOTP();
+
+            }, 700);
+
+        }
+    );
+
+
+    /* =====================================================
+       OTP INPUT BEHAVIOUR
+    ===================================================== */
+
+    otpInputs.forEach(function (input, index) {
+
+        input.addEventListener(
+            "input",
+            function () {
+
+                this.value =
+                    this.value
+                        .replace(/\D/g, "")
+                        .slice(-1);
+
+                this.classList.remove("error");
+
+
+                if (
+                    this.value &&
+                    index < otpInputs.length - 1
+                ) {
+
+                    otpInputs[index + 1].focus();
+
+                }
+
+            }
+        );
+
+
+        input.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Backspace" &&
+                    !this.value &&
+                    index > 0
+                ) {
+
+                    otpInputs[index - 1].focus();
+
+                }
+
+
+                if (
+                    event.key === "ArrowLeft" &&
+                    index > 0
+                ) {
+
+                    otpInputs[index - 1].focus();
+
+                }
+
+
+                if (
+                    event.key === "ArrowRight" &&
+                    index <
+                    otpInputs.length - 1
+                ) {
+
+                    otpInputs[index + 1].focus();
+
+                }
+
+            }
+        );
+
+
+        /* OTP PASTE */
+
+        input.addEventListener(
+            "paste",
+            function (event) {
+
+                event.preventDefault();
+
+                const pasted =
+                    (
+                        event.clipboardData ||
+                        window.clipboardData
+                    )
+                    .getData("text")
+                    .replace(/\D/g, "")
+                    .slice(0, 6);
+
+
+                if (!pasted) return;
+
+
+                pasted
+                    .split("")
+                    .forEach(function (
+                        character,
+                        pastedIndex
+                    ) {
+
+                        if (
+                            otpInputs[
+                                pastedIndex
+                            ]
+                        ) {
+
+                            otpInputs[
+                                pastedIndex
+                            ].value =
+                                character;
+
+                        }
+
+                    });
+
+
+                const focusIndex =
+                    Math.min(
+                        pasted.length,
+                        otpInputs.length - 1
+                    );
+
+                otpInputs[
+                    focusIndex
+                ].focus();
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       GET OTP
+    ===================================================== */
+
+    function getEnteredOTP() {
+
+        return otpInputs
+            .map(function (input) {
+                return input.value;
+            })
+            .join("");
+
+    }
+
+
+    /* =====================================================
+       VERIFY OTP
+    ===================================================== */
+
+    verifyOtpBtn.addEventListener(
+        "click",
+        function () {
+
+            const enteredOTP =
+                getEnteredOTP();
+
+
+            if (otpSeconds <= 0) {
+
+                demoOtp.textContent =
+                    "OTP expired. Please resend a new OTP.";
+
+                return;
+
+            }
+
+
+            if (enteredOTP.length !== 6) {
+
+                demoOtp.textContent =
+                    "Please enter all 6 digits.";
+
+                otpInputs.forEach(
+                    function (input) {
+
+                        if (!input.value) {
+                            input.classList.add("error");
+                        }
+
+                    }
+                );
+
+                return;
+
+            }
+
+
+            if (enteredOTP !== generatedOTP) {
+
+                demoOtp.textContent =
+                    "Incorrect OTP. Please try again.";
+
+                otpInputs.forEach(
+                    function (input) {
+
+                        input.value = "";
+                        input.classList.add("error");
+
+                    }
+                );
+
+                otpInputs[0].focus();
+
+                return;
+
+            }
+
+
+            /* =================================================
+               VERIFICATION SUCCESS
+            ================================================= */
+
+            aadhaarVerified = true;
+
+            clearInterval(otpTimerInterval);
+
+
+            showStatus(
+                "✓ Aadhaar verification completed successfully.",
+                "success"
+            );
+
+
+            setFieldSuccess(aadhaarNumber);
+
+
+            /* Lock identity */
+
+            farmerName.disabled = true;
+            mobileNumber.disabled = true;
+            aadhaarNumber.disabled = true;
+
+
+            verifyAadhaarBtn.disabled = true;
+
+            verifyAadhaarBtn.innerHTML =
+                "<span>Verified ✓</span>";
+
+
+            /* Hide OTP */
+
+            otpPanel.classList.remove("show");
+
+
+            /* Unlock details */
+
+            detailsWrapper.classList.add(
+                "unlocked"
+            );
+
+
+            lockMessage.style.display =
+                "none";
+
+
+            [
+                bankName,
+                accountNumber,
+                ifscCode,
+                state,
+                district,
+                mandal
+            ].forEach(function (input) {
+
+                input.disabled = false;
+
+            });
+
+
+            /* Progress */
+
+            document
+                .querySelector(
+                    '.kt-progress-step[data-step="1"]'
+                )
+                .classList.remove("active");
+
+
+            document
+                .querySelector(
+                    '.kt-progress-step[data-step="1"]'
+                )
+                .classList.add("completed");
+
+
+            document
+                .querySelector(
+                    '.kt-progress-step[data-step="2"]'
+                )
+                .classList.add("active");
+
+
+            setTimeout(function () {
+
+                bankName.focus();
+
+            }, 300);
+
+        }
+    );
+
+
+    /* =====================================================
+       RESEND OTP
+    ===================================================== */
+
+    resendOtpBtn.addEventListener(
+        "click",
+        function () {
+
+            sendOTP();
+
+            demoOtp.textContent =
+                "New Demo OTP: " +
+                generatedOTP;
+
+        }
+    );
+
+
+    /* =====================================================
+       ACCOUNT SHOW/HIDE
+    ===================================================== */
+
+    toggleAccount.addEventListener(
+        "click",
+        function () {
+
+            const isPassword =
+                accountNumber.type === "password";
+
+
+            accountNumber.type =
+                isPassword
+                    ? "text"
+                    : "password";
+
+
+            toggleAccount.textContent =
+                isPassword
+                    ? "Hide"
+                    : "Show";
+
+        }
+    );
+
+
+    /* =====================================================
+       IFSC VALIDATION
+    ===================================================== */
+
+    function validateIFSC() {
+
+        /*
+            Standard format:
+            ABCD0XXXXXX
+
+            4 letters
+            5th character always 0
+            Last 6 characters alphanumeric
+        */
+
+        const ifscPattern =
+            /^[A-Z]{4}0[A-Z0-9]{6}$/;
+
+
+        if (
+            !ifscPattern.test(
+                ifscCode.value.trim()
+            )
+        ) {
+
+            showError(
+                ifscCode,
+                "Enter a valid IFSC format. Example: SBIN0001234"
+            );
+
+            return false;
+
+        }
+
+
+        return true;
+
+    }
+
+
+    /* =====================================================
+       VALIDATE DETAILS
+    ===================================================== */
+
+    function validateDetails() {
+
+        let valid = true;
+
+
+        if (
+            bankName.value.trim().length < 2
+        ) {
+
+            showError(
+                bankName,
+                "Please enter a valid bank name."
+            );
+
+            valid = false;
+
+        }
+
+
+        if (
+            accountNumber.value
+                .replace(/\s/g, "")
+                .length < 8
+        ) {
+
+            showError(
+                accountNumber,
+                "Enter a valid account number."
+            );
+
+            valid = false;
+
+        }
+
+
+        if (!validateIFSC()) {
+
+            valid = false;
+
+        }
+
+
+        if (!state.value) {
+
+            showError(
+                state,
+                "Please select your state."
+            );
+
+            valid = false;
+
+        }
+
+
+        if (
+            district.value.trim().length < 2
+        ) {
+
+            showError(
+                district,
+                "Please enter your district."
+            );
+
+            valid = false;
+
+        }
+
+
+        if (
+            mandal.value.trim().length < 2
+        ) {
+
+            showError(
+                mandal,
+                "Please enter your mandal."
+            );
+
+            valid = false;
+
+        }
+
+
+        return valid;
+
+    }
+
+
+    /* =====================================================
+       SUBMIT FORM
+    ===================================================== */
+
+    form.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            if (!aadhaarVerified) {
+
+                showStatus(
+                    "Please complete Aadhaar verification first.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (!validateDetails()) {
+
+                return;
+
+            }
+
+
+            /* Progress Step 3 */
+
+            document
+                .querySelector(
+                    '.kt-progress-step[data-step="2"]'
+                )
+                .classList.remove("active");
+
+
+            document
+                .querySelector(
+                    '.kt-progress-step[data-step="2"]'
+                )
+                .classList.add("completed");
+
+
+            document
+                .querySelector(
+                    '.kt-progress-step[data-step="3"]'
+                )
+                .classList.add("active");
+
+
+            /* Show success */
+
+            setTimeout(function () {
+
+                successModal.classList.add(
+                    "show"
+                );
+
+            }, 250);
+
+        }
+    );
+
+
+    /* =====================================================
+       RESET FORM
+    ===================================================== */
+
+    form.addEventListener(
+        "reset",
+        function () {
+
+            setTimeout(function () {
+
+                aadhaarVerified = false;
+
+                generatedOTP = "";
+
+                clearInterval(
+                    otpTimerInterval
+                );
+
+
+                /* Reset identity */
+
+                farmerName.disabled = false;
+                mobileNumber.disabled = false;
+                aadhaarNumber.disabled = false;
+
+
+                /* Reset button */
+
+                verifyAadhaarBtn.disabled = false;
+
+                verifyAadhaarBtn.innerHTML = `
+                    <span class="kt-btn-text">
+                        Verify Aadhaar
+                    </span>
+                    <span class="kt-btn-loader"></span>
+                `;
+
+
+                /* Reset OTP */
+
+                otpPanel.classList.remove(
+                    "show"
+                );
+
+                otpInputs.forEach(
+                    function (input) {
+
+                        input.value = "";
+                        input.classList.remove("error");
+
+                    }
+                );
+
+
+                /* Reset details */
+
+                detailsWrapper.classList.remove(
+                    "unlocked"
+                );
+
+
+                lockMessage.style.display =
+                    "flex";
+
+
+                [
+                    bankName,
+                    accountNumber,
+                    ifscCode,
+                    state,
+                    district,
+                    mandal
+                ].forEach(function (input) {
+
+                    input.disabled = true;
+
+                });
+
+
+                /* Reset messages */
+
+                verificationStatus.className =
+                    "kt-verification-status";
+
+                verificationStatus.textContent = "";
+
+                demoOtp.textContent = "";
+
+
+                /* Reset errors */
+
+                document
+                    .querySelectorAll(
+                        ".kt-field"
+                    )
+                    .forEach(function (field) {
+
+                        field.classList.remove(
+                            "is-error",
+                            "is-success"
+                        );
+
+                        const error =
+                            field.querySelector(
+                                ".kt-field-error"
+                            );
+
+                        if (error) {
+                            error.textContent = "";
+                        }
+
+                    });
+
+
+                /* Reset progress */
+
+                document
+                    .querySelectorAll(
+                        ".kt-progress-step"
+                    )
+                    .forEach(function (step) {
+
+                        step.classList.remove(
+                            "active",
+                            "completed"
+                        );
+
+                    });
+
+
+                document
+                    .querySelector(
+                        '.kt-progress-step[data-step="1"]'
+                    )
+                    .classList.add("active");
+
+            }, 0);
+
+        }
+    );
+
+
+    /* =====================================================
+       GO TO DASHBOARD
+    ===================================================== */
+
+    goDashboardBtn.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "dashboard.html";
+
+        }
+    );
+
+
+    /* Close modal by clicking background */
+
+    successModal.addEventListener(
+        "click",
+        function (event) {
+
+            if (event.target === successModal) {
+
+                successModal.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+});
+/* =========================================================
+   KISAN TURN - DASHBOARD PROCUREMENT STATUS
+   Add below existing script.js code
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const dashboardPage =
+        document.querySelector(".kt-dashboard-page");
+
+    /* Only run on dashboard */
+    if (!dashboardPage) return;
+
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const requestCount =
+        document.getElementById("ktRequestCount");
+
+    const identityStatus =
+        document.getElementById("ktIdentityStatus");
+
+    const currentStatus =
+        document.getElementById("ktCurrentStatus");
+
+    const procurementTitle =
+        document.getElementById("ktProcurementTitle");
+
+    const procurementDescription =
+        document.getElementById(
+            "ktProcurementDescription"
+        );
+
+    const statusPill =
+        document.getElementById("ktStatusPill");
+
+    const activityList =
+        document.getElementById("ktActivityList");
+
+    const clearActivity =
+        document.getElementById("ktClearActivity");
+
+    const progressItems =
+        document.querySelectorAll(
+            ".kt-dashboard-progress-item"
+        );
+
+    const progressLines =
+        document.querySelectorAll(
+            ".kt-dashboard-progress-line"
+        );
+
+
+    /* =====================================================
+       GET PROCUREMENT DATA
+    ===================================================== */
+
+    const procurementData =
+        JSON.parse(
+            localStorage.getItem(
+                "kisanTurnProcurement"
+            )
+        );
+
+
+    /* =====================================================
+       NO PROCUREMENT
+    ===================================================== */
+
+    if (!procurementData) {
+
+        if (requestCount) {
+            requestCount.textContent = "0";
+        }
+
+        if (identityStatus) {
+            identityStatus.textContent =
+                "Not Verified";
+        }
+
+        if (currentStatus) {
+            currentStatus.textContent =
+                "Not Started";
+        }
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       PROCUREMENT EXISTS
+    ===================================================== */
+
+    if (requestCount) {
+        requestCount.textContent = "1";
+    }
+
+    if (identityStatus) {
+        identityStatus.textContent =
+            "Verified";
+    }
+
+    if (currentStatus) {
+        currentStatus.textContent =
+            "Processing";
+    }
+
+    if (procurementTitle) {
+        procurementTitle.textContent =
+            "Procurement Request Active";
+    }
+
+    if (procurementDescription) {
+        procurementDescription.textContent =
+            "Your procurement request has been submitted and is currently being processed.";
+    }
+
+
+    /* =====================================================
+       STATUS PILL
+    ===================================================== */
+
+    if (statusPill) {
+
+        statusPill.className =
+            "kt-status-pill processing";
+
+        statusPill.innerHTML =
+            "<span></span> Processing";
+
+    }
+
+
+    /* =====================================================
+       PROGRESS UPDATE
+    ===================================================== */
+
+    progressItems.forEach(
+        function (item, index) {
+
+            if (index <= 2) {
+
+                item.classList.add(
+                    "completed"
+                );
+
+            }
+
+        }
+    );
+
+
+    progressLines.forEach(
+        function (line, index) {
+
+            if (index < 2) {
+
+                line.classList.add(
+                    "completed"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       ACTIVITY
+    ===================================================== */
+
+    if (activityList) {
+
+        activityList.innerHTML = `
+
+            <div class="kt-activity-item">
+
+                <div class="kt-activity-icon">
+                    ✓
+                </div>
+
+                <div class="kt-activity-content">
+
+                    <strong>
+                        Procurement request submitted
+                    </strong>
+
+                    <span>
+                        Your request is currently under processing.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="kt-activity-item">
+
+                <div class="kt-activity-icon">
+                    👤
+                </div>
+
+                <div class="kt-activity-content">
+
+                    <strong>
+                        Identity verified
+                    </strong>
+
+                    <span>
+                        Aadhaar verification completed successfully.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="kt-activity-item">
+
+                <div class="kt-activity-icon">
+                    📋
+                </div>
+
+                <div class="kt-activity-content">
+
+                    <strong>
+                        Registration completed
+                    </strong>
+
+                    <span>
+                        Procurement details were successfully submitted.
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =====================================================
+       CLEAR ACTIVITY
+    ===================================================== */
+
+    if (clearActivity) {
+
+        clearActivity.addEventListener(
+            "click",
+            function () {
+
+                if (!activityList) return;
+
+                activityList.innerHTML = `
+
+                    <div class="kt-empty-activity">
+
+                        <div>
+                            📋
+                        </div>
+
+                        <strong>
+                            No activity yet
+                        </strong>
+
+                        <p>
+                            Your future procurement updates will appear here.
+                        </p>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+    }
+
+});
